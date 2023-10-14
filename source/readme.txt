@@ -28,4 +28,9 @@ example: develop <- ck-hr-home
 12. If you are confident, merge the pull request yourself. Else ask others to review the code and then merge.
 13. When you want to continue work the next time, make sure to switch to develop branch and click 'Fetch origin' and then pull in case there are changes
 14. Once your develop branch has the latest code, change branch to your feature branch (new for a new module or old for an existing module)
-15. 
+15. Now go the option branch in the top of the menu and then select 'Merge into current branch' and merge code from develop to your feature branch
+-------------------------------------
+example: ck-hr-home <- develop
+-------------------------------------
+16. THIS WILL ENSURE THAT YOU ARE ALWAYS WORKING ON THE LATEST CODE
+17. Follow steps from 7 onwards again
