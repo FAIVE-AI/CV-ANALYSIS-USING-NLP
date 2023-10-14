@@ -1,0 +1,45 @@
+@use "../../colors.scss" as app;
+
+h1 {
+  font-size: 50px;
+}
+
+#home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: app.$primary-gold;
+}
+
+#home-sub-header {
+  margin: 40px 0 20px 0;
+  font-size: 30px;
+}
+
+#home-role-buttons-container {
+  min-width: 70%;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-role-button {
+  border: 1px solid black;
+  padding: 50px;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+  min-width: 200px;
+  background-color: app.$primary-gold;
+  color: app.$primary-blue;
+  cursor: pointer;
+}
+
+.home-role-button:hover {
+  border: none;
+  -webkit-box-shadow: 0 0 10px app.$primary-gold;
+  box-shadow: 0 0 20px app.$primary-gold;
+}
