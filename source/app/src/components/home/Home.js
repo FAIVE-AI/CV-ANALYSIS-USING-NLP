@@ -2,6 +2,10 @@ import { Component } from "react";
 import './Home.scss';
 
 export default class Home extends Component {
+    login = () => {
+        
+    }
+
     render() {
         return (
             <div id="home-container">
@@ -10,7 +14,7 @@ export default class Home extends Component {
                     Login / Register with your role:
                 </div>
                 <div id="home-role-buttons-container">
-                    <div className="home-role-button">
+                    <div onClick={() => this.login} className="home-role-button">
                         Job-Seeker
                     </div>
                     <div className="home-role-button">
