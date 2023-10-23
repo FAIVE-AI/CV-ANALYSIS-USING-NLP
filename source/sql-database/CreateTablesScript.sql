@@ -6,6 +6,9 @@ CREATE TABLE Candidate (
 	AptitudeScore INT
 );
 
+ALTER TABLE Candidate
+ADD LoginPassword VARCHAR(20);
+
 --DROP TABLE Candidate
 
 CREATE TABLE HRExecutive (
