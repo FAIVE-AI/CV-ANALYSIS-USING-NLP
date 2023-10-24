@@ -6,11 +6,13 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
 // Post body contains user ID and password. The password is checked for particular user ID to authenticate.
-router.post("/login", (req, res) => {
+router.post("/login/:type", (req, res) => {
   try {
     executeDBQuery(
       "SELECT",
-      `SELECT LoginPassword FROM Candidate WHERE ID=${req.body.id};`
+      req.params.type === "candidate"
+        ? `SELECT LoginPassword FROM Candidate WHERE ID=${req.body.id};`
+        : `SELECT LoginPassword FROM HRExecutive WHERE ID=${req.body.id};`
     ).then((results) => {
       const result = results[0];
       if (req.body.password === result?.LoginPassword?.value) {

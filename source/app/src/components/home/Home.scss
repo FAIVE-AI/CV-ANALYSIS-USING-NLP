@@ -43,3 +43,7 @@ h1 {
   -webkit-box-shadow: 0 0 10px app.$primary-gold;
   box-shadow: 0 0 20px app.$primary-gold;
 }
+
+a:any-link {
+  text-decoration: none;
+}
