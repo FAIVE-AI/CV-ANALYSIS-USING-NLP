@@ -41,8 +41,8 @@ h1 {
 #candidate-register-score-section {
   display: flex;
   flex-direction: row;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .candidate-register-score-item {
