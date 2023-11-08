@@ -20,5 +20,14 @@ export const AuthService = {
         "Content-Type": "application/json"
       }
     });
+  },
+  register: (candidate) => {
+    return fetch(authEndpoint + "/register", {
+      method: "POST",
+      body: JSON.stringify(candidate),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
   }
 };
