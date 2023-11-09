@@ -71,7 +71,6 @@ function executeQuery(statementType, query, queryParameters) {
         request.on("requestCompleted", function (rowCount, more) {
           console.log("Request completed.");
           resolve(resultSet);
-          // return resultSet;
         });
 
         connection.execSql(request);
