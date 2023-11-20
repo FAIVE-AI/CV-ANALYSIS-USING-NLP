@@ -21,10 +21,10 @@ export const AuthService = {
       }
     });
   },
-  hrRanklistJobTable: (credentials) => {
-    return fetch(authEndpoint + "/login/hr-exec", {
+  register: (candidate) => {
+    return fetch(authEndpoint + "/register", {
       method: "POST",
-      body: JSON.stringify(credentials),
+      body: JSON.stringify(candidate),
       headers: {
         "Content-Type": "application/json"
       }
