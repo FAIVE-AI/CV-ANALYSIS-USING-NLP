@@ -20,5 +20,17 @@ export const AuthService = {
         "Content-Type": "application/json"
       }
     });
+  },
+  hrRanklistJobTable: (credentials) => {
+    return fetch(authEndpoint + "/login/hr-exec", {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
   }
+
 };
+
+

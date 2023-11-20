@@ -1,0 +1,31 @@
+
+#ranklist-text {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color:#ffd966;
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+  }
+  
+  td, th {
+    border: 3px solid #fffcfc;
+    text-align: center;
+    padding: 5px;
+  }
+ 
+  tr:nth-child(even){
+    background-color:#f5e4b1;
+    color :#0070c0;
+  }
+  tr:nth-child(odd){
+    background-color:#f5e4b1;
+    color :#0070c0;
+  }
+  tr:first-child{
+    background-color: #ffd966;
+  }
