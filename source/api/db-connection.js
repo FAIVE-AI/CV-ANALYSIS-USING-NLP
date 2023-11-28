@@ -44,7 +44,7 @@ connection.connect();
  * Exectutes a query in the SQL Server database
  * @param {String} statementType - SELECT, INSERT, UPDATE, DELETE
  * @param {String} query - Pass the query string
- * @param {String} queryParameters - Object containing columns to be inserted / updated [{columnName: "String", dataType="String", value="String"}]
+ * @param {String} queryParameters - Object containing columns to be inserted / updated [{columnName: "String", dataType: "String", value: "String"}]
  * @returns Promise<Array<T>>
  */
 function executeQuery(statementType, query, queryParameters) {
@@ -71,7 +71,6 @@ function executeQuery(statementType, query, queryParameters) {
         request.on("requestCompleted", function (rowCount, more) {
           console.log("Request completed.");
           resolve(resultSet);
-          // return resultSet;
         });
 
         connection.execSql(request);
@@ -108,6 +107,7 @@ function executeQuery(statementType, query, queryParameters) {
           resolve(true);
           console.log("Request completed.");
         });
+
         connection.execSql(request);
       } catch (error) {
         reject(error);
