@@ -1,60 +1,102 @@
-//  @use "../../colors.scss" as colors;
+ @use "../../colors.scss" as colors;
 
-// .hairline {
-//     color: colors.$primary-black;
-//     height : 2;
-//     width: 165;
-// }
+ #header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+ }
 
-
-
-
-// // Decide what is needed
-// #login-register-container {
+// #job-create-container {
 //     display: flex;
 //     flex-direction: column;
-//     align-items: center;
 //     justify-content: center;
-//   }
-    
-//   #login-register-sub-header {
-//     margin: 30px 0 80px 0;
+//     padding: bottom 100px
+// }
+#hr-nav-button{
+    min-width: 100px;
+    border: 1px solid black;
+    background-color: colors.$primary-gold;
+    color: colors.$primary-blue;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+
+.hr-nav-bar-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+#hr-nav-button:hover {
+    border: 1px solid colors.$primary-gold;
+    -webkit-box-shadow: 0 0 10px colors.$primary-gold;
+    box-shadow: 0 0 20px colors.$primary-gold;
+  }
+
+// #job-posting-button-container {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-evenly;
+//     margin-top: 40px;
+// }
+// .desc_titles {
+//     padding-right : 30px;
 //     font-size: 30px;
-//   }
-  
-//   .login-register-field-container {
+//     font-weight: bold;
+// }
+
+// #job-role-buttons-container{
+//   display: flex;
+//   flex-direction: column;
+//   align-items: left;
+//   justify-content: left;
+// }
+
+// .job-desc-field-container {
 //     min-width: 500px;
 //     display: flex;
 //     flex-direction: row;
 //     align-items: center;
 //     justify-content: space-between;
 //     margin: 10px 0;
-//   }
-  
-//   .login-register-label {
-//     font-size: 30px;
-//     font-weight: bold;
-//   }
-  
-//   .login-register-input {
+// }
+
+// .job-posting-input {
 //     width: 300px;
 //     height: 40px;
 //     border: 1px solid black;
 //     font-size: 30px;
 //     font-weight: bold;
-//     font-style: italic;
 //     color: colors.$primary-blue;
-//   }
-  
-//   #login-register-button-container {
+// }
+
+// .job-posting-multi-input {
+//     width: 300px;
+//     height: 150px;
+//     border: 1px solid black;
+//     font-size: 15px;
+//     font-weight: bold;
+//     color: colors.$primary-blue;
+// }
+
+// #job-posting-button-container {
 //     display: flex;
 //     flex-direction: row;
 //     align-items: center;
 //     justify-content: space-evenly;
 //     margin-top: 40px;
-//   }
+// }
   
-//   .login-register-button {
+// .job-posting-button {
 //     min-width: 100px;
 //     border: 1px solid black;
 //     background-color: colors.$primary-gold;
@@ -65,22 +107,57 @@
 //     padding: 10px 20px;
 //     margin: 0 20px;
 //     cursor: pointer;
-//   }
-  
-//   .login-register-button:hover {
+// }
+
+// .job-posting-button:hover {
 //     border: 1px solid colors.$primary-gold;
 //     -webkit-box-shadow: 0 0 10px colors.$primary-gold;
 //     box-shadow: 0 0 20px colors.$primary-gold;
-//   }
-  
-//   #login-register-nav-button {
+// }
+
+// #post-job-nav-button {
 //     visibility: hidden;
 //   }
   
-//   a:any-link {
-//     text-decoration: none;
+// #hr-page-button{
+//     min-width: 100px;
+//     border: 1px solid black;
+//     background-color: colors.$primary-gold;
+//     color: colors.$primary-blue;
+//     text-align: center;
+//     font-size: 30px;
+//     font-weight: bold;
+//     padding: 10px 20px;
+//     margin: 0 20px;
+//     cursor: pointer;
+//     padding: 10px 20px;
+// }
+
+// #job-posting-button-container {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-evenly;
+//     margin-top: 40px;
+// }
+
+// #hr-nav-buttons-container {
+//     min-width: 70%;
+//     margin-top: 150px;
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;
 //   }
   
-//   #login-register-error-message {
-//     margin-top: 40px;
+//   .hr-nav-button {
+//     border: 1px solid black;
+//     padding: 50px;
+//     font-size: 30px;
+//     font-weight: bolder;
+//     text-align: center;
+//     min-width: 200px;
+//     background-color: app.$primary-gold;
+//     color: app.$primary-blue;
+//     cursor: pointer;
 //   }
