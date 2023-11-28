@@ -6,7 +6,8 @@ require("dotenv").config({ path: __dirname + "/.env" });
 var config = {
   server: process.env.SQL_SERVER,
   options: {
-    instanceName: "SQLEXPRESS",
+    //instanceName: "SQLEXPRESS",
+    //instanceName: "",
     database: process.env.SQL_DB,
     rowCollectionOnDone: true,
     useColumnNames: true,

@@ -5,6 +5,7 @@ import LoginRegister from "./components/login-register/LoginRegister";
 import CandidateHome from "./components/candidate-home/CandidateHome";
 import HRExecHome from "./components/hr-exec-home/HRExecHome";
 import CandidateRegister from "./components/candidate-register/CandidateRegister";
+import HrRanklist from "./components/hr-ranklist/HrRanklist";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
         <Route
           path="/candidate-register"
           element={<CandidateRegister></CandidateRegister>}
+        ></Route>
+        <Route
+          path="/hr-ranklist"
+          element={<HrRanklist></HrRanklist>}
         ></Route>
       </Routes>
     </div>
