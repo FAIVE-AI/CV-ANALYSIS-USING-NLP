@@ -1,4 +1,4 @@
-import "./HRJobCreation.scss";
+import "./HRViewJobs.scss";
 import { Component } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -7,7 +7,6 @@ export default class HRViewJobs extends Component {
         super(props);
         this.state = {
           hrDetails: {name:""},
-          password: "",
           showErrorMessage: false
         };
       }
