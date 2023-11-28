@@ -5,6 +5,8 @@ import LoginRegister from "./components/login-register/LoginRegister";
 import CandidateHome from "./components/candidate-home/CandidateHome";
 import HRExecHome from "./components/hr-exec-home/HRExecHome";
 import CandidateRegister from "./components/candidate-register/CandidateRegister";
+import HRJobCreation from "./components/hr-job-creation/HRJobCreation";
+import HRViewJobs from "./components/hr-view-jobs/HRViewJobs";
 
 function App() {
   return (
@@ -27,6 +29,14 @@ function App() {
         <Route
           path="/candidate-register"
           element={<CandidateRegister></CandidateRegister>}
+        ></Route>
+        <Route
+          path="/hr-job-create"
+          element={<HRJobCreation hrDetails={{ name: "CK", id: 9000001 }}></HRJobCreation>}
+        ></Route>
+        <Route
+          path="/hr-view-jobs"
+          element={<HRViewJobs></HRViewJobs>}
         ></Route>
       </Routes>
     </div>

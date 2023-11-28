@@ -9,7 +9,8 @@ export default class LoginRegister extends Component {
     this.state = {
       id: "",
       password: "",
-      showErrorMessage: false
+      showErrorMessage: false,
+      hrDetails: {}
     };
   }
 
