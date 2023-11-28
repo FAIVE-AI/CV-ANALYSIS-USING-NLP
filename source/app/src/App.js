@@ -7,6 +7,7 @@ import HRExecHome from "./components/hr-exec-home/HRExecHome";
 import CandidateRegister from "./components/candidate-register/CandidateRegister";
 import HRJobCreation from "./components/hr-job-creation/HRJobCreation";
 import HRViewJobs from "./components/hr-view-jobs/HRViewJobs";
+import HrRanklist from "./components/hr-ranklist/HrRanklist";
 
 function App() {
   return (
@@ -37,6 +38,10 @@ function App() {
         <Route
           path="/hr-view-jobs"
           element={<HRViewJobs></HRViewJobs>}
+          ></Route>
+          <Route
+          path="/hr-ranklist"
+          element={<HrRanklist></HrRanklist>}
         ></Route>
       </Routes>
     </div>
