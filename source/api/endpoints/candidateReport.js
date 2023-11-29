@@ -12,11 +12,11 @@ router.post("/candidatereport/:candidatename", (req, res) => {
     try {
       executeDBQuery(
         "SELECT",
-        `SELECT SkillsetScore, PersonalityScore, AptitudeScore, Skillset, PersonalityType, Experience, PersonalityDescription FROM Candidate WHERE ID=${req.body.candidatename};`
+        `SELECT SkillsetScore, PersonalityScore, AptitudeScore, Skillset, PersonalityType, Experience, PersonalityDescription FROM Candidate WHERE Name=${req.body.candidatename};`
       ).then((results) => {
         const result = results[0];
-        if (req.body.password === result?.LoginPassword?.value) {
-          res.send({ authenticated: true });
+        if (result) {
+          res.status(200).send({result});
         } else {
           res.status(401).send({
             authenticated: false,
