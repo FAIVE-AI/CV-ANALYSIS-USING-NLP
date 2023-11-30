@@ -6,7 +6,8 @@ export default class HRCandidateReport extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listData: []
+            listData: [],
+            candidateDetails:{name:""}
           };
       }
 
@@ -42,28 +43,14 @@ export default class HRCandidateReport extends Component {
           }
         });
       };  
-      renderTableData() {
-        // Render the table rows with data
-        return this.state.listData.map((item, index) => {
-          const performanceScores = Object.values(item);
-          return (
-            <tr key={index}>
-                {performanceScores
-                  .filter((value, index) => ['skillsetScore','personalityCompatabilityScore','AptitudeScore', 'overallScore'].includes(Object.keys(item)[index]))
-                  .map((value, index) => (
-                    <td key={index}>{typeof value === 'object' ? value.value : value}</td>
-                  ))}
-              </tr>
-            );
-          });
-        }
+      
     render() {
         return (
             <div>
                 <div id="header-container">
                     <label name='candidate-name' id="candidate-name">{this.props.candidateDetails.name}</label>
                 </div>
-                <div className="table-sontainer">
+                <div className="table-container">
                     <table>
                     <thead>
                         <tr>
@@ -73,99 +60,52 @@ export default class HRCandidateReport extends Component {
                             <th className="table-header">Overall Score :</th>
                         </tr>
                     </thead>
-                    <tbody> {this.renderTableData()}</tbody>
+                    <tbody> 
+                      <td className="table-content">{this.props.skillsetscore}</td>
+                      <td className="table-content">{this.props.personalityscore}</td>
+                      <td className="table-content">{this.props.aptitudescore}</td>
+                      <td className="table-content">{this.props.overallscore}</td>
+                    </tbody>
                     </table>
                 </div>
-
-
-
-
-
-                    {/* <a href="/hr-view-jobs">
-                        <span id = "hr-nav-button" className="hr-nav-bar-container">View Posted Jobs</span>
-                    </a>
-                    <a href="/hr-job-create">
-                        <span id = "hr-nav-button" className="hr-nav-bar-container">Post New Job</span>
-                    </a> */}
-                
                 <div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Title : </label>
-                        <input 
-                        editable
-                        autoComplete="on"
-                        className = "job-posting-input"
-                        name="title"
-                        type="text"
-                        maxLength={40}
-                        // value={value}
-                        ></input>
-                    </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Location : </label>
-                        <select className = "job-posting-input">
-                            <option>Toronto</option>
-                            <option>Vancouver</option>
-                            <option>Montreal</option>
-                        </select>
-                    </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Last Date To Apply : </label>
-                        <input 
-                        editable
-                        className = "job-posting-input"
-                        name="lastDate"
-                        type="date"
-                        maxLength={40}
-                        // value={value}
-                        ></input>
-                    </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Compensation : </label>
-                        <input
-                        editable
-                        className = "job-posting-input"
-                        name="lastDate"
-                        type="number"
-                        placeholder = "$"
-                        maxLength={8}
-                        // value={value}
-                        ></input>
-                    </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Job Description : </label>
-                        <textarea 
-                        editable
-                        className = "job-posting-multi-input"
-                        name="jobDescription"
-                        type="text"
-                        multiline
-                        numberOfLines={10}
-                        maxLength={400}
-                        // value={value}
-                        ></textarea>
-                    </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Job Qualifications : </label>
-                        <textarea 
-                        editable
-                        className = "job-posting-multi-input"
-                        name="jobQualification"
-                        type="text"
-                        multiline
-                        numberOfLines={10}
-                        maxLength={400}
-                        // value={value}
-                        ></textarea>
-                    </div>
-                    <div id="job-post-button-container">
-                        <button 
-                        onClick={() => this.postJob()}
-                        className="job-post-button" 
-                        > 
-                        Post 
-                        </button>
-                    </div>
+                  <span>
+                    <label>Skillset :</label>
+                    <input 
+                    type="text"
+                    readonly
+                    placeholder={this.state.skillset.toString()}
+                    ></input>
+                  </span>
+                  <span>
+                    <label>Personality Type :</label>
+                    <input 
+                    type="text"
+                    readonly
+                    placeholder={this.state.personality.toString()}
+                    ></input>
+                  </span>
+                  <span>
+                    <label>Experience :</label>
+                    <input 
+                    type="text"
+                    readonly
+                    placeholder={this.state.experience.toString()}
+                    ></input>
+                  </span>
+                </div>
+                <div>
+                 <label>Personality Description :</label>
+                 <input 
+                    type="text"
+                    multiline
+                    readonly
+                    placeholder={this.state.personalitydescription.toString()}
+                    ></input>
+                </div>
+                <div>
+                  <button>Send Interview Invite</button>
+                  <button>Remove</button>
                 </div>
             </div>    
         )
