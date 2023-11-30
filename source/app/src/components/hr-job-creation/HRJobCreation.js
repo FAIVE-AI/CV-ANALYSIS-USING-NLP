@@ -1,6 +1,5 @@
 import "./HRJobCreation.scss";
 import { Component } from "react";
-import { NavLink } from "react-router-dom";
 import { JobPostingService } from "../../services/job-posting-service";
 
 export default class HRJobCreation extends Component {
@@ -8,14 +7,12 @@ export default class HRJobCreation extends Component {
         super(props);
         this.state = {
           hrDetails: {name:""},
-          password: "",
           showErrorMessage: false
         };
       }
 
       postJob = (type) => {
-        const method =
-          JobPostingService.jobPosting
+        const method =JobPostingService.jobPosting
     
         method({
           title: this.state.title,
@@ -48,18 +45,18 @@ export default class HRJobCreation extends Component {
         return (
             <div>
                 <div id="header-container">
-                    <label name='hr-name'>Welcome, {this.props.hrDetails.name}</label>
-                    <NavLink to={"/hr-view-jobs"}>
-                        <span id = "hr-nav-button" className="hr-nav-bar-container">View Posted Jobs</span>
-                    </NavLink>
-                    <NavLink to={"/hr-job-create"}>
-                        <span id = "hr-nav-button" className="hr-nav-bar-container">Post New Job</span>
-                    </NavLink>
+                    <label name='hr-name' id = "hr-name">Welcome, {this.props.hrDetails.name}</label>
+                    <a href="/hr-view-jobs">
+                        <span id = "hr-button" className="hr-nav-button-container hr-view">View Posted Jobs</span>
+                    </a>
+                    <a href="/hr-job-create">
+                        <span id = "hr-button" className="hr-nav-button-container hr-post">Post New Job</span>
+                    </a>
                 </div>
                 <hr/>
-                <div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Title : </label>
+                <div id="hr-form-body-container">
+                    <div className="job-field-container">
+                        <label className='hr-form-label'>Title : </label>
                         <input 
                         editable
                         autoComplete="on"
@@ -70,16 +67,16 @@ export default class HRJobCreation extends Component {
                         // value={value}
                         ></input>
                     </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Location : </label>
+                    <div className="job-field-container">
+                        <label className='hr-form-label'>Location : </label>
                         <select className = "job-posting-input">
                             <option>Toronto</option>
                             <option>Vancouver</option>
                             <option>Montreal</option>
                         </select>
                     </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Last Date To Apply : </label>
+                    <div className="job-field-container">
+                        <label className='hr-form-label'>Last Date To Apply : </label>
                         <input 
                         editable
                         className = "job-posting-input"
@@ -89,8 +86,8 @@ export default class HRJobCreation extends Component {
                         // value={value}
                         ></input>
                     </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Compensation : </label>
+                    <div className="job-field-container">
+                        <label className='hr-form-label'>Compensation : </label>
                         <input
                         editable
                         className = "job-posting-input"
@@ -101,8 +98,8 @@ export default class HRJobCreation extends Component {
                         // value={value}
                         ></input>
                     </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Job Description : </label>
+                    <div className="job-field-container">
+                        <label className='hr-form-label'>Job Description : </label>
                         <textarea 
                         editable
                         className = "job-posting-multi-input"
@@ -114,8 +111,8 @@ export default class HRJobCreation extends Component {
                         // value={value}
                         ></textarea>
                     </div>
-                    <div className="job-desc-field-container">
-                        <label className='desc_titles'>Job Qualifications : </label>
+                    <div className="job-field-container">
+                        <label className='hr-form-label'>Job Qualifications : </label>
                         <textarea 
                         editable
                         className = "job-posting-multi-input"
@@ -130,7 +127,7 @@ export default class HRJobCreation extends Component {
                     <div id="job-post-button-container">
                         <button 
                         onClick={() => this.postJob()}
-                        className="job-post-button" 
+                        id = "hr-button" className="hr-submit"
                         > 
                         Post 
                         </button>

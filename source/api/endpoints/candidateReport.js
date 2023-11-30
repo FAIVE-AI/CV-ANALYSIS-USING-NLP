@@ -1,7 +1,6 @@
 var express = require("express");
 var executeDBQuery = require("../db-connection");
 const router = express.Router();
-// const CandidateReportMapper = require("../mappers/candidate-report-mapper");
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));

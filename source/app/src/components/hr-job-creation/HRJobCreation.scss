@@ -1,33 +1,38 @@
  @use "../../colors.scss" as colors;
 
- #header-container {
+//Header section
+#header-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
- }
+    padding-top:10px;
+}
 
-// #job-create-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     padding: bottom 100px
-// }
-#hr-nav-button{
+#hr-name{
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+#hr-button{
     min-width: 100px;
     border: 1px solid black;
-    background-color: colors.$primary-gold;
-    color: colors.$primary-blue;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
-    padding: 10px 20px;
-    margin: 0 20px;
+    padding: 8px 10px;
+    margin: 0 10px;
     cursor: pointer;
 }
 
+#hr-button:hover {
+    border: 1px solid colors.$primary-gold;
+    -webkit-box-shadow: 0 0 10px colors.$primary-gold;
+    box-shadow: 0 0 20px colors.$primary-gold;
+}
 
-.hr-nav-bar-container{
+.hr-nav-button-container{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -35,129 +40,75 @@
     margin-top: 40px;
 }
 
-#hr-nav-button:hover {
-    border: 1px solid colors.$primary-gold;
+.hr-view{
+    background-color: silver;
+    color: colors.$primary-blue;
+}
+
+.hr-post{
+    background-color: colors.$primary-gold;
+    color: colors.$primary-blue;
     -webkit-box-shadow: 0 0 10px colors.$primary-gold;
-    box-shadow: 0 0 20px colors.$primary-gold;
-  }
+     box-shadow: 0 0 20px colors.$primary-gold;
+}
 
-// #job-posting-button-container {
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-evenly;
-//     margin-top: 40px;
-// }
-// .desc_titles {
-//     padding-right : 30px;
-//     font-size: 30px;
-//     font-weight: bold;
-// }
+//Body section
+#hr-form-body-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:50px;
+}
 
-// #job-role-buttons-container{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: left;
-//   justify-content: left;
-// }
+.job-field-container {
+    min-width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    margin-left:200px;
+    margin-right: 200px;
+}
 
-// .job-desc-field-container {
-//     min-width: 500px;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-between;
-//     margin: 10px 0;
-// }
+.hr-form-label{
+    font-size: 30px;
+    font-weight: bold;
+}
 
-// .job-posting-input {
-//     width: 300px;
-//     height: 40px;
-//     border: 1px solid black;
-//     font-size: 30px;
-//     font-weight: bold;
-//     color: colors.$primary-blue;
-// }
+.job-posting-input {
+  width: 350px;
+  height: 40px;
+  border: 1px solid black;
+  font-size: 30px;
+  font-weight: bold;
+  color: colors.$primary-blue;
+}
 
-// .job-posting-multi-input {
-//     width: 300px;
-//     height: 150px;
-//     border: 1px solid black;
-//     font-size: 15px;
-//     font-weight: bold;
-//     color: colors.$primary-blue;
-// }
+.job-posting-multi-input {
+    width: 300px;
+    height: 150px;
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    color: colors.$primary-blue;
+    padding-right: 50px;
+    align-content: left;
+}
 
-// #job-posting-button-container {
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-evenly;
-//     margin-top: 40px;
-// }
-  
-// .job-posting-button {
-//     min-width: 100px;
-//     border: 1px solid black;
-//     background-color: colors.$primary-gold;
-//     color: colors.$primary-blue;
-//     text-align: center;
-//     font-size: 30px;
-//     font-weight: bold;
-//     padding: 10px 20px;
-//     margin: 0 20px;
-//     cursor: pointer;
-// }
 
-// .job-posting-button:hover {
-//     border: 1px solid colors.$primary-gold;
-//     -webkit-box-shadow: 0 0 10px colors.$primary-gold;
-//     box-shadow: 0 0 20px colors.$primary-gold;
-// }
+#job-post-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+}
 
-// #post-job-nav-button {
-//     visibility: hidden;
-//   }
-  
-// #hr-page-button{
-//     min-width: 100px;
-//     border: 1px solid black;
-//     background-color: colors.$primary-gold;
-//     color: colors.$primary-blue;
-//     text-align: center;
-//     font-size: 30px;
-//     font-weight: bold;
-//     padding: 10px 20px;
-//     margin: 0 20px;
-//     cursor: pointer;
-//     padding: 10px 20px;
-// }
 
-// #job-posting-button-container {
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-evenly;
-//     margin-top: 40px;
-// }
 
-// #hr-nav-buttons-container {
-//     min-width: 70%;
-//     margin-top: 150px;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-between;
-//   }
-  
-//   .hr-nav-button {
-//     border: 1px solid black;
-//     padding: 50px;
-//     font-size: 30px;
-//     font-weight: bolder;
-//     text-align: center;
-//     min-width: 200px;
-//     background-color: app.$primary-gold;
-//     color: app.$primary-blue;
-//     cursor: pointer;
-//   }
+.hr-submit{
+    background-color: colors.$primary-gold;
+    color: colors.$primary-blue;
+}
