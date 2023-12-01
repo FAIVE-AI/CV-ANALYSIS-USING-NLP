@@ -65,6 +65,7 @@ router.post("/register", (req, res) => {
   }
 });
 
+
 //Created for JobPostings by PC
 router.get("/hr-ranklist/", (req, res) => {
   try {
@@ -96,5 +97,4 @@ router.get("/candidate-list/", (req, res) => {
     res.status(500).send(error);
   }
 });
-
 module.exports = router;

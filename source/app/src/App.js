@@ -38,7 +38,7 @@ function App() {
         <Route
           path="/hr-view-jobs"
           element={<HRViewJobs></HRViewJobs>}
-          ></Route>
+        ></Route>
           <Route
           path="/hr-ranklist"
           element={<HrRanklist></HrRanklist>}

@@ -1,29 +1,40 @@
 import "./HRJobCreation.scss";
 import { Component } from "react";
-import { JobPostingService } from "../../services/job-posting-service";
+import { HRService } from "../../services/hr-portal-service";
+import { NavLink } from "react-router-dom";
 
 export default class HRJobCreation extends Component {
     constructor(props) {
         super(props);
         this.state = {
           hrDetails: {name:""},
-          showErrorMessage: false
+          title: "",
+          joblocation: "",
+          lastdate:"",
+          salary:"",
+          jobdescription:"",
+          jobqualification:""
         };
       }
 
+      updateTextBox = (e) => {
+        this.setState({
+          [e.target.name]: e.target.value
+        });
+      };
       postJob = (type) => {
-        const method =JobPostingService.jobPosting
+        const method =HRService.jobPosting
     
         method({
           title: this.state.title,
           joblocation: this.state.joblocation,
           lastdate:this.state.lastdate,
-          wages: this.state.wages,
+          salary: this.state.salary,
           jobdescription:this.state.jobdescription,
           jobqualification:this.state.jobqualification
         }).then((response) => {
           if (response.ok) {
-            document.getElementById("post-job-nav-button").click();
+            document.getElementById("hr-post-job-button").click();
           } else {
             this.setState(
               {
@@ -56,38 +67,56 @@ export default class HRJobCreation extends Component {
                 <hr/>
                 <div id="hr-form-body-container">
                     <div className="job-field-container">
-                        <label className='hr-form-label'>Title : </label>
+                        <label 
+                        className='hr-form-label' 
+                        htmlFor="job-post-title"
+                        >Title : </label>
                         <input 
                         editable
                         autoComplete="on"
                         className = "job-posting-input"
+                        id = "job-post-title"
                         name="title"
                         type="text"
                         maxLength={40}
-                        // value={value}
+                        value={this.state.title}
+                        onChange={this.updateTextBox}
                         ></input>
                     </div>
                     <div className="job-field-container">
-                        <label className='hr-form-label'>Location : </label>
-                        <select className = "job-posting-input">
+                        <label 
+                        className='hr-form-label'
+                        htmlFor="job-post-location"
+                        >Location : </label>
+                        <select 
+                        className = "job-posting-input"
+                        id="job-post-location"
+                        value={this.state.joblocation}
+                        onChange={this.updateTextBox}>
                             <option>Toronto</option>
                             <option>Vancouver</option>
                             <option>Montreal</option>
                         </select>
                     </div>
                     <div className="job-field-container">
-                        <label className='hr-form-label'>Last Date To Apply : </label>
+                        <label 
+                        className='hr-form-label'
+                        htmlFor="job-post-last-date">Last Date To Apply : </label>
                         <input 
                         editable
                         className = "job-posting-input"
                         name="lastDate"
                         type="date"
                         maxLength={40}
-                        // value={value}
+                        id="job-post-last-date"
+                        value={this.state.lastdate}
+                        onChange={this.updateTextBox}
                         ></input>
                     </div>
                     <div className="job-field-container">
-                        <label className='hr-form-label'>Compensation : </label>
+                        <label 
+                        className='hr-form-label'
+                        htmlFor="job-post-Salary">Salary : </label>
                         <input
                         editable
                         className = "job-posting-input"
@@ -95,11 +124,14 @@ export default class HRJobCreation extends Component {
                         type="number"
                         placeholder = "$"
                         maxLength={8}
-                        // value={value}
+                        id="job-post-Salary"
+                        value={this.state.salary}
+                        onChange={this.updateTextBox}
                         ></input>
                     </div>
                     <div className="job-field-container">
-                        <label className='hr-form-label'>Job Description : </label>
+                        <label className='hr-form-label'
+                        htmlFor="job-post-description">Job Description : </label>
                         <textarea 
                         editable
                         className = "job-posting-multi-input"
@@ -108,11 +140,14 @@ export default class HRJobCreation extends Component {
                         multiline
                         numberOfLines={10}
                         maxLength={400}
-                        // value={value}
+                        id="job-post-description"
+                        value={this.state.jobdescription}
+                        onChange={this.updateTextBox}
                         ></textarea>
                     </div>
                     <div className="job-field-container">
-                        <label className='hr-form-label'>Job Qualifications : </label>
+                        <label className='hr-form-label'
+                        id="job-post-qualifications">Job Qualifications : </label>
                         <textarea 
                         editable
                         className = "job-posting-multi-input"
@@ -121,17 +156,32 @@ export default class HRJobCreation extends Component {
                         multiline
                         numberOfLines={10}
                         maxLength={400}
-                        // value={value}
+                        id="job-post-qualifications"
+                        value={this.state.jobqualification}
+                        onChange={this.updateTextBox}
                         ></textarea>
                     </div>
+                    {(
                     <div id="job-post-button-container">
-                        <button 
+                      <div
                         onClick={() => this.postJob()}
-                        id = "hr-button" className="hr-submit"
-                        > 
-                        Post 
-                        </button>
+                        id = "hr-button" 
+                        className="hr-submit" >Login
+                      </div>
                     </div>
+                    )}  
+                    {this.state.showErrorMessage && (
+                      <p id="login-register-error-message">
+                         This job posting already exists!!
+                      </p>
+                    )}                  
+                    <NavLink
+                    id="post-job-navlink"
+                    to={"/hr-view-jobs"}>
+                      <button id="hr-post-job-button" type="button">
+                        Navigate
+                      </button>
+                    </NavLink>
                 </div>
             </div>    
         )

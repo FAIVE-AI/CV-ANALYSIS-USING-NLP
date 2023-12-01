@@ -117,12 +117,16 @@ export default class LoginRegister extends Component {
         )}
         {!this.props.isCandidate && (
           <div id="login-register-button-container">
+             <NavLink
+             id="login-register-register-navlink"
+             to={"/hr-view-jobs"}>
             <div
               onClick={() => this.authenticateUser("hr-exec")}
               className="login-register-button"
             >
               Login
             </div>
+           </NavLink>
           </div>
         )}
         {this.state.showErrorMessage && (

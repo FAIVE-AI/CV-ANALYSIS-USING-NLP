@@ -11,7 +11,7 @@ export default class HRCandidateReport extends Component {
           };
       }
 
-      candidateReport = (type) => {
+      candidateReport = (name) => {
         const method =HRCandidateReportService.candidateReport
     
         method({
@@ -26,7 +26,7 @@ export default class HRCandidateReport extends Component {
           personalitydescription:this.state.personalitydescription,
         }).then((response) => {
           if (response.ok) {
-            document.getElementById("post-job-nav-button").click();
+            document.getElementById("send-email-button").click();
           } else {
             this.setState(
               {
