@@ -6,6 +6,8 @@ import CandidateHome from "./components/candidate-home/CandidateHome";
 import HRExecHome from "./components/hr-exec-home/HRExecHome";
 import CandidateRegister from "./components/candidate-register/CandidateRegister";
 
+import AptitudeTest from './components/aptitude-test/AptitudeTest'; 
+
 function App() {
   return (
     <div>
@@ -28,9 +30,17 @@ function App() {
           path="/candidate-register"
           element={<CandidateRegister></CandidateRegister>}
         ></Route>
+        
+        <Route path="/AptitudeTest" element={<AptitudeTest></AptitudeTest>} />
       </Routes>
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
