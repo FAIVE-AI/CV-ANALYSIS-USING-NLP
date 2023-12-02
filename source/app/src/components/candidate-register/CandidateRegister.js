@@ -145,7 +145,7 @@ export default class CandidateRegister extends Component {
             <a
               id="candidate-register-aptitude-test-input"
               className="candidate-register-test-link"
-              href="www.google.com"
+              href="http://localhost:3000/AptitudeTest"
               target="_blank"
             >
               Take the test

@@ -5,6 +5,7 @@ import LoginRegister from "./components/login-register/LoginRegister";
 import CandidateHome from "./components/candidate-home/CandidateHome";
 import HRExecHome from "./components/hr-exec-home/HRExecHome";
 import CandidateRegister from "./components/candidate-register/CandidateRegister";
+import AptitudeTest from './components/aptitude-test/AptitudeTest'; 
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           path="/candidate-register"
           element={<CandidateRegister></CandidateRegister>}
         ></Route>
+        
+        <Route path="/AptitudeTest" element={<AptitudeTest></AptitudeTest>}></Route>
+      
       </Routes>
     </div>
   );
