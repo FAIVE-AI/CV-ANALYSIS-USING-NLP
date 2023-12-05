@@ -166,12 +166,12 @@ export default class HRJobCreation extends Component {
                       <div
                         onClick={() => this.postJob()}
                         id = "hr-button" 
-                        className="hr-submit" >Login
+                        className="hr-submit" >Post
                       </div>
                     </div>
                     )}  
                     {this.state.showErrorMessage && (
-                      <p id="login-register-error-message">
+                      <p id="job-posting-error-message">
                          This job posting already exists!!
                       </p>
                     )}                  
