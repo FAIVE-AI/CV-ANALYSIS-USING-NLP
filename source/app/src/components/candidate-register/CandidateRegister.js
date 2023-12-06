@@ -1,3 +1,4 @@
+import { AuthService } from "../../services/auth-service";
 import "./CandidateRegister.scss";
 import { Component } from "react";
 
@@ -38,6 +39,17 @@ export default class CandidateRegister extends Component {
     this.setState({
       uploadedFileName: resume.name
     });
+  };
+
+  createCandidate = () => {
+    const candidate = {
+      candidateName: this.state.name,
+      emailId: this.state.email,
+      personalityScore: this.state.personalityScore,
+      aptitudeScore: this.state.aptitudeScore,
+      loginPassword: this.state.password
+    };
+    AuthService.register(candidate).then((response) => console.log(response));
   };
 
   render() {
