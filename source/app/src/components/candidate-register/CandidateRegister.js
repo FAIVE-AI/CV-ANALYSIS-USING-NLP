@@ -1,6 +1,7 @@
 import { AuthService } from "../../services/auth-service";
 import "./CandidateRegister.scss";
 import { Component } from "react";
+import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
 
 export default class CandidateRegister extends Component {
   constructor(props) {
@@ -11,15 +12,18 @@ export default class CandidateRegister extends Component {
       password: "",
       personalityScore: null,
       aptitudeScore: null,
+      resumePlainText: "",
       resume: {
+        introduction: "",
         skills: "",
-        personality: "",
         education: "",
         experience: ""
       },
       uploadedFileName: "",
       showErrorMessage: false
     };
+    GlobalWorkerOptions.workerSrc =
+      "//cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.worker.min.mjs";
   }
 
   updateTextBox = (e) => {
@@ -36,9 +40,77 @@ export default class CandidateRegister extends Component {
     console.log(e);
     const resume = document.getElementById("candidate-register-resume-input")
       .files[0];
+    this.readFile(resume);
     this.setState({
       uploadedFileName: resume.name
     });
+  };
+
+  readFile = (file) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const typedarray = new Uint8Array(event.target.result);
+      getDocument(typedarray).promise.then((pdf) => {
+        let extractedText = "";
+        const numPages = pdf.numPages;
+        for (let i = 1; i <= numPages; i++) {
+          pdf.getPage(i).then((page) => {
+            page.getTextContent().then((pageText) => {
+              pageText.items.forEach((textItem) => {
+                extractedText += textItem.str + " ";
+              });
+              this.setState(
+                {
+                  resumePlainText: extractedText
+                },
+                () => {
+                  console.log(this.state.resumePlainText);
+                  this.setState(
+                    {
+                      resume: {
+                        introduction: this.getResumeSection("introduction"),
+                        skills: this.getResumeSection("skills"),
+                        education: this.getResumeSection("education"),
+                        experience: this.getResumeSection("experience")
+                      }
+                    },
+                    () => {
+                      console.log("intro", this.state.resume.introduction);
+                      console.log("skills", this.state.resume.skills);
+                      console.log("education", this.state.resume.education);
+                      console.log("experience", this.state.resume.experience);
+                    }
+                  );
+                }
+              );
+            });
+          });
+        }
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
+  getResumeSection = (sectionName) => {
+    switch (sectionName) {
+      case "introduction":
+        return this.state.resumePlainText
+          .split("INTRODUCTION")[1]
+          .split("SKILLS")[0];
+      case "skills":
+        return this.state.resumePlainText
+          .split("SKILLS")[1]
+          .split("EDUCATION")[0];
+      case "education":
+        return this.state.resumePlainText
+          .split("EDUCATION")[1]
+          .split("E XPER IENCE")[0];
+      case "experience":
+        return this.state.resumePlainText.split("E XPER IENCE")[1];
+
+      default:
+        break;
+    }
   };
 
   createCandidate = () => {
@@ -177,6 +249,7 @@ export default class CandidateRegister extends Component {
           onChange={this.uploadFile}
           type="file"
           id="candidate-register-resume-input"
+          accept=".pdf"
         ></input>
         {this.state.showErrorMessage && (
           <p id="candidate-register-error-message">
