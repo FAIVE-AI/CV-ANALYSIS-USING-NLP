@@ -16,6 +16,18 @@ router.post("/login/:type", (req, res) => {
       req.params.type === "candidate"
         ? `SELECT LoginPassword FROM Candidate WHERE ID=${req.body.id};`
         : `SELECT LoginPassword FROM HRExecutive WHERE ID=${req.body.id};`
+        //   try {
+//     const jobId = req.params.jobid;
+//     console.log(request,"jhkhghhhhhhhhhhhhhhhhhhhhhhhhhh")
+//     executeDBQuery(
+//       "SELECT",
+//       `SELECT * FROM JobCandidate WHERE JobID=${jobId};`
+//     ).then((results) => {
+//       res.send(results);
+//     });
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
     ).then((results) => {
       const result = results[0];
       if (req.body.password === result?.LoginPassword?.value) {
@@ -82,11 +94,17 @@ router.get("/hr-ranklist/", (req, res) => {
 });
 
 //Created for RanklistList Table by PC
-router.get("/candidate-list/", (req, res) => {
+router.get("/candidate-list/:jobid", (req, res) => {
   try {
+    const jobId = req.params.jobid;
     executeDBQuery(
       "SELECT" , 
-      "SELECT * FROM JobCandidate"
+      `SELECT FitmentRank, Candidate.CandidateName, CandidateResume.Skills
+        FROM Candidate 
+        INNER JOIN JobCandidate ON Candidate.ID = JobCandidate.CandidateID
+        INNER JOIN CandidateResume ON Candidate.ID = CandidateResume.CandidateID
+        WHERE JobCandidate.JobID = ${jobId};`
+    //`SELECT * FROM JobCandidate WHERE JobID=${jobId};`,
     ).then((results) => {
 
       res.send(results);
@@ -96,5 +114,4 @@ router.get("/candidate-list/", (req, res) => {
     res.status(500).send(error);
   }
 });
-
 module.exports = router;
