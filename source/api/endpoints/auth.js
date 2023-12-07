@@ -65,4 +65,36 @@ router.post("/register", (req, res) => {
   }
 });
 
+//Created for JobPostings by PC
+router.get("/hr-ranklist/", (req, res) => {
+  try {
+    executeDBQuery(
+      "SELECT" , 
+      "SELECT * FROM JobPosting",
+    ).then((results) => {
+
+      res.send(results);
+
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//Created for RanklistList Table by PC
+router.get("/candidate-list/", (req, res) => {
+  try {
+    executeDBQuery(
+      "SELECT" , 
+      "SELECT * FROM JobCandidate"
+    ).then((results) => {
+
+      res.send(results);
+
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;
