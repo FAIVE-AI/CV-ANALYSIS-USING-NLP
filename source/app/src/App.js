@@ -5,6 +5,7 @@ import LoginRegister from "./components/login-register/LoginRegister";
 import CandidateHome from "./components/candidate-home/CandidateHome";
 import HRExecHome from "./components/hr-exec-home/HRExecHome";
 import CandidateRegister from "./components/candidate-register/CandidateRegister";
+import AptitudeTest from './components/aptitude-test/AptitudeTest'; 
 import HrRanklist from "./components/hr-ranklist/HrRanklist";
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           path="/candidate-register"
           element={<CandidateRegister></CandidateRegister>}
         ></Route>
+        
+        <Route path="/AptitudeTest" element={<AptitudeTest></AptitudeTest>}></Route>
+      
         <Route
           path="/hr-ranklist"
           element={<HrRanklist></HrRanklist>}
