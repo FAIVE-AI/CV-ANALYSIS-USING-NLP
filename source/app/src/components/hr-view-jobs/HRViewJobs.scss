@@ -185,3 +185,10 @@ tr:first-child {
 .personality-label{
     padding-right: 20px;
 }
+
+#job-scheduled-text{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

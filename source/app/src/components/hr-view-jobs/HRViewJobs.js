@@ -45,25 +45,14 @@ export default class HRViewJobs extends Component {
   }
 
   scheduleInterview = () => {
-    const method =""
-
-    method({
-    }).then((response) => {
-      if (response.ok) {
-      } else {
-        this.setState(
-          {
-            showErrorMessage: true
-          },
-          () => {
-            setTimeout(() => {
-              this.setState({
-                showErrorMessage: false
-              });
-            }, 5000);
-          }
-        );
-      }
+    this.setState({
+      showErrorMessage: true
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          showErrorMessage: false
+        });
+      }, 5000);
     });
   };
   renderTableData() {
@@ -126,7 +115,7 @@ export default class HRViewJobs extends Component {
               {this.renderTableData()}
             </tbody>
           </table>
-          <p id="ranklist-text">Considerable Candidates for the job posting - </p>
+          <p id="ranklist-text">Considerable Candidates for the job posting - {this.props.jobDetails.jobTitle}</p>
           <table>
             <thead>
               <tr>
@@ -165,7 +154,7 @@ export default class HRViewJobs extends Component {
           </div>
           <div class="personality-field-holder">
             <span>
-              <label class = "personality-label">Skillset :</label>
+              <label class="personality-label">Skillset :</label>
               <input
                 type="text"
                 disabled
@@ -173,7 +162,7 @@ export default class HRViewJobs extends Component {
               ></input>
             </span>
             <span>
-              <label class = "personality-label">Personality Type :</label>
+              <label class="personality-label">Personality Type :</label>
               <input
                 type="text"
                 disabled
@@ -181,7 +170,7 @@ export default class HRViewJobs extends Component {
               ></input>
             </span>
             <span>
-              <label class = "personality-label">Experience :</label>
+              <label class="personality-label">Experience :</label>
               <input
                 type="text"
                 disabled
@@ -190,24 +179,31 @@ export default class HRViewJobs extends Component {
             </span>
           </div>
           <div class="personality-description-field-holder">
-            <label class = "personality-label">Personality Description :</label>
+            <label class="personality-label">Personality Description :</label>
             <input
               type="text"
               multiline
               disabled
-              id = "personality-container"
+              id="personality-container"
               placeholder={this.props.candidateDetails.personalitydescription}
             ></input>
           </div>
-          <div id = "job-post-button-container">
+          <div id="job-post-button-container">
             {(
               <div id="">
                 <div
-                  onClick={() => this.postJob()}
+                  onClick={() => this.scheduleInterview()}
                   id="hr-button"
                   className="hr-submit">Send Interview Invite
                 </div>
               </div>
+            )}
+          </div>
+          <div>
+            {this.state.showErrorMessage && (
+              <p id="job-scheduled-text">
+                Interview has been scheduled for the candidate - {this.props.candidateDetails.name} for the position - {this.props.jobDetails.jobTitle}
+              </p>
             )}
           </div>
         </div>
