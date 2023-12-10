@@ -1,3 +1,4 @@
 {
-  "SERVER_URL": "http://localhost:3020"
+  "SERVER_URL": "http://localhost:3020",
+  "AI_URL": "http://localhost:5000"
 }

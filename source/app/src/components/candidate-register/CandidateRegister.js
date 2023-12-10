@@ -2,6 +2,7 @@ import { AuthService } from "../../services/auth-service";
 import "./CandidateRegister.scss";
 import { Component } from "react";
 import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
+import { AIService } from "../../services/ai-service";
 
 export default class CandidateRegister extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class CandidateRegister extends Component {
         education: "",
         experience: ""
       },
+      personalityTypes: [],
       uploadedFileName: "",
       showErrorMessage: false
     };
@@ -65,22 +67,16 @@ export default class CandidateRegister extends Component {
                 },
                 () => {
                   console.log(this.state.resumePlainText);
-                  this.setState(
-                    {
-                      resume: {
-                        introduction: this.getResumeSection("introduction"),
-                        skills: this.getResumeSection("skills"),
-                        education: this.getResumeSection("education"),
-                        experience: this.getResumeSection("experience")
-                      }
-                    },
-                    () => {
-                      console.log("intro", this.state.resume.introduction);
-                      console.log("skills", this.state.resume.skills);
-                      console.log("education", this.state.resume.education);
-                      console.log("experience", this.state.resume.experience);
+                  this.setState({
+                    resume: {
+                      introduction: this.getResumeSection("introduction"),
+                      skills: this.getResumeSection("skills"),
+                      education: this.getResumeSection("education"),
+                      experience: this.getResumeSection("experience")
                     }
-                  );
+                  }, () => {
+                    this.getPersonalityTypes();
+                  });
                 }
               );
             });
@@ -111,6 +107,14 @@ export default class CandidateRegister extends Component {
       default:
         break;
     }
+  };
+
+  getPersonalityTypes = () => {
+    AIService.getPersonalityTypes(this.state.resume.introduction).then(
+      (response) => {
+        console.log(response);
+      }
+    );
   };
 
   createCandidate = () => {
