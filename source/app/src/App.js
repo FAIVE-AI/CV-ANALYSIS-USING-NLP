@@ -37,7 +37,11 @@ function App() {
         ></Route>
         <Route
           path="/hr-view-jobs"
-          element={<HRViewJobs></HRViewJobs>}
+          element={<HRViewJobs 
+          hrDetails={{ name: "CK", id: 9000001 }} 
+          jobDetails={{ jobTitle: "Software Developer"}} 
+          candidateDetails={{name:"Sairaj",skillsetscore:"59",personalityscore:"75",aptitudescore:"80",overallscore:"78",personalitydescription:"Nice guy",skillset:"Python",personality:"Leader",experience:"4.5 Years"}}>
+          </HRViewJobs>}
         ></Route>
           <Route
           path="/hr-ranklist"

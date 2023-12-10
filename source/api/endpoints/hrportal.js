@@ -9,7 +9,7 @@ router.use(express.urlencoded({ extended: false }));
 // Job Creation
 // Post body contains the job details that will be created by the HR.
 // Post Body will check if the job already exists.
-router.post("/create", (req, res) => {
+router.post("/jobposting/create", (req, res) => {
   const jobPosting = req.body;
   let queryParameters = [];
   for (let property in jobPosting) {

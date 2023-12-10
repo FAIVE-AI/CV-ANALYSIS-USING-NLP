@@ -14,7 +14,7 @@ export const HRService = {
    },
   
    jobPosting: (jobDetails) => {
-      return fetch(hrportalEndpoint + "/jobposting", {
+      return fetch(hrportalEndpoint + "/jobposting/create", {
         method: "POST",
         body: JSON.stringify(jobDetails),
         headers: {

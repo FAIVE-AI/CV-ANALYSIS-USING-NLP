@@ -6,16 +6,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-top:10px;
+    padding-top: 10px;
 }
 
-#hr-name{
+#hr-name {
     font-size: 20px;
     font-weight: bold;
     padding-left: 10px;
 }
 
-#hr-button{
+#hr-button {
     min-width: 100px;
     border: 1px solid black;
     text-align: center;
@@ -32,7 +32,7 @@
     box-shadow: 0 0 20px colors.$primary-gold;
 }
 
-.hr-nav-button-container{
+.hr-nav-button-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,25 +40,25 @@
     margin-top: 40px;
 }
 
-.hr-post-job{
+.hr-post-posting-page {
     background-color: silver;
     color: colors.$primary-blue;
 }
 
-.hr-view-job{
+.hr-view-posting-page {
     background-color: colors.$primary-gold;
     color: colors.$primary-blue;
     -webkit-box-shadow: 0 0 10px colors.$primary-gold;
-     box-shadow: 0 0 20px colors.$primary-gold;
+    box-shadow: 0 0 20px colors.$primary-gold;
 }
 
 
 //Body section
-#hr-form-body-container{
+#hr-form-body-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin:50px;
+    margin: 50px;
 }
 
 .job-field-container {
@@ -68,22 +68,22 @@
     align-items: center;
     justify-content: space-between;
     margin: 10px 0;
-    margin-left:200px;
+    margin-left: 200px;
     margin-right: 200px;
 }
 
-.hr-form-label{
+.hr-form-label {
     font-size: 30px;
     font-weight: bold;
 }
 
 .job-posting-input {
-  width: 350px;
-  height: 40px;
-  border: 1px solid black;
-  font-size: 30px;
-  font-weight: bold;
-  color: colors.$primary-blue;
+    width: 350px;
+    height: 40px;
+    border: 1px solid black;
+    font-size: 30px;
+    font-weight: bold;
+    color: colors.$primary-blue;
 }
 
 .job-posting-multi-input {
@@ -98,7 +98,7 @@
 }
 
 
-#job-post-button-container{
+#job-post-button-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -107,11 +107,81 @@
     padding: 20px;
 }
 
-#hr-post-job-button{
+#hr-post-job-button {
     visibility: false;
 }
 
-.hr-submit{
+.hr-submit {
     background-color: colors.$primary-gold;
     color: colors.$primary-blue;
+}
+
+#table-header-container {
+    text-align: center;
+    padding: 20px;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffd966;
+}
+
+
+#ranklist-text {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffd966;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+}
+
+td,
+th {
+    border: 3px solid #fffcfc;
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #f5e4b1;
+    color: #0070c0;
+}
+
+tr:nth-child(odd) {
+    background-color: #f5e4b1;
+    color: #0070c0;
+}
+
+tr:first-child {
+    background-color: #ffd966;
+}
+
+.personality-field-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.personality-description-field-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#personality-container {
+    height: 70px;
+    width: 750px;
+}
+
+.personality-label{
+    padding-right: 20px;
 }

@@ -58,10 +58,10 @@ export default class HRJobCreation extends Component {
                 <div id="header-container">
                     <label name='hr-name' id = "hr-name">Welcome, {this.props.hrDetails.name}</label>
                     <a href="/hr-view-jobs">
-                        <span id = "hr-button" className="hr-nav-button-container hr-view">View Posted Jobs</span>
+                        <span id = "hr-button" className="hr-nav-button-container hr-view-create-page">View Posted Jobs</span>
                     </a>
                     <a href="/hr-job-create">
-                        <span id = "hr-button" className="hr-nav-button-container hr-post">Post New Job</span>
+                        <span id = "hr-button" className="hr-nav-button-container hr-post-create-page">Post New Job</span>
                     </a>
                 </div>
                 <hr/>
@@ -178,7 +178,7 @@ export default class HRJobCreation extends Component {
                     <NavLink
                     id="post-job-navlink"
                     to={"/hr-view-jobs"}>
-                      <button id="hr-post-job-button" type="button">
+                      <button hidden id="hr-post-job-button" type="button">
                         Navigate
                       </button>
                     </NavLink>
