@@ -1,6 +1,7 @@
 import pickle
 import re
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 
 cEXT = pickle.load(open("data/models/cEXT.p", "rb"))
 # cNEU = pickle.load(open("data/models/cNEU.p", "rb"))
@@ -24,8 +25,11 @@ def predict_personality(text):
     return result
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/predict', methods=["POST"])
+@cross_origin()
 def predict():
     text = request.json['introduction']
     response = {"prediction": predict_personality(text)}

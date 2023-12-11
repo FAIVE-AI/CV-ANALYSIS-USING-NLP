@@ -119,9 +119,9 @@ export default class CandidateRegister extends Component {
       case "education":
         return this.state.resumePlainText
           .split("EDUCATION")[1]
-          .split("E XPER IENCE")[0];
+          .split("EXPERIENCE")[0];
       case "experience":
-        return this.state.resumePlainText.split("E XPER IENCE")[1];
+        return this.state.resumePlainText.split("EXPERIENCE")[1];
 
       default:
         break;
@@ -131,7 +131,30 @@ export default class CandidateRegister extends Component {
   getPersonalityTypes = () => {
     AIService.getPersonalityTypes(this.state.resume.introduction).then(
       (response) => {
-        console.log(response);
+        response.json().then((result) => {
+          let personalityTypes = [];
+          if (result.prediction[0]) {
+            personalityTypes.push("Extraversion");
+          }
+          if (result.prediction[1]) {
+            personalityTypes.push("Agreeableness");
+          }
+          if (result.prediction[2]) {
+            personalityTypes.push("Conscientiousness");
+          }
+          if (result.prediction[3]) {
+            personalityTypes.push("Openness");
+          }
+
+          this.setState(
+            {
+              personalityTypes: personalityTypes
+            },
+            () => {
+              console.log(this.state.personalityTypes);
+            }
+          );
+        });
       }
     );
   };
