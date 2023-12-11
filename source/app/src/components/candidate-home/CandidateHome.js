@@ -2,88 +2,72 @@ import "./CandidateHome.scss";
 import { Component } from "react";
 
 export default class CandidateHome extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <div id="candidate-register-container">
+      <div id="candidate-home-container">
         <h1>FAIVE - AI-Based Job Portal</h1>
-        <div className="candidate-register-field-container">
+        <div className="candidate-home-field-container">
           <label
-            className="candidate-register-label"
-            id="candidate-register-name-label"
-            htmlFor="candidate-register-name-input"
+            className="candidate-home-label"
+            id="candidate-home-name-label"
+            htmlFor="candidate-home-name-input"
           >
             Name:
           </label>
           <input
             autoComplete="off"
-            id="candidate-register-name-input"
-            className="candidate-register-input"
+            id="candidate-home-name-input"
+            className="candidate-home-input"
             name="name"
             type="text"
-            value={this.state.name}
-            onChange={this.updateTextBox}
+            value={this.props.candidateDetails?.name}
             disabled
           ></input>
         </div>
-        <div className="candidate-register-field-container">
+        <div className="candidate-home-field-container">
           <label
-            className="candidate-register-label"
-            id="candidate-register-email-label"
-            htmlFor="candidate-register-email-input"
+            className="candidate-home-label"
+            id="candidate-home-email-label"
+            htmlFor="candidate-home-email-input"
           >
             Email ID:
           </label>
           <input
             autoComplete="off"
-            id="candidate-register-email-input"
-            className="candidate-register-input"
+            id="candidate-home-email-input"
+            className="candidate-home-input"
             name="email"
             type="email"
-            value={this.state.email}
-            onChange={this.updateTextBox}
+            value={this.props.candidateDetails?.email}
             disabled
           ></input>
         </div>
-        <div id="candidate-register-score-section">
-          <div className="candidate-register-score-item">
+        <div id="candidate-home-score-section">
+          <div className="candidate-home-score-item">
             <label
-              className="candidate-register-label"
-              id="candidate-register-personality-test-label"
+              className="candidate-home-label"
+              id="candidate-home-personality-test-label"
             >
               Personality:
             </label>
-            <label>According to our AI system, your personality types are: </label>
+            <label>
+              According to our AI system, your personality types are:{" "}
+            </label>
           </div>
-          <div className="candidate-register-score-item">
+          <div className="candidate-home-score-item">
             <label
-              className="candidate-register-label"
-              id="candidate-register-aptitude-test-label"
+              className="candidate-home-label"
+              id="candidate-home-aptitude-test-label"
             >
               Aptitude:
             </label>
             <label>This is your aptitude score: </label>
           </div>
         </div>
-
-        <div id="candidate-register-save-button">
-          <div
-            onClick={this.viewJobs}
-            className="candidate-register-button"
-          >
-            Create
-          </div>
-        </div>
-        <input
-          onChange={this.uploadFile}
-          type="file"
-          id="candidate-register-resume-input"
-          accept=".pdf"
-        ></input>
-        {this.state.showErrorMessage && (
-          <p id="candidate-register-error-message">
-            Something went wrong. Please try again.
-          </p>
-        )}
       </div>
     );
   }

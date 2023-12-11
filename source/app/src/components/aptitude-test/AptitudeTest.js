@@ -4,6 +4,7 @@ import "./AptitudeTest.scss";
 export default function AptitudeTest() {
   const questions = [
     {
+      id: 1,
       questionText: "1. What is 298 + 437?",
       answerOptions: [
         { answerText: "771", isCorrect: false },
@@ -13,6 +14,7 @@ export default function AptitudeTest() {
       ]
     },
     {
+      id: 2,
       questionText: "2. What is the next number in the series: 2, 5, 10, 17, ?",
       answerOptions: [
         { answerText: "25", isCorrect: false },
@@ -22,6 +24,7 @@ export default function AptitudeTest() {
       ]
     },
     {
+      id: 3,
       questionText:
         "3. If a book originally cost $40 and is now on sale for 25% off, what is the sale price?",
       answerOptions: [
@@ -32,6 +35,7 @@ export default function AptitudeTest() {
       ]
     },
     {
+      id: 4,
       questionText: "4. If 3x + 5 = 20, what is the value of x?",
       answerOptions: [
         { answerText: "7", isCorrect: true },
@@ -41,6 +45,7 @@ export default function AptitudeTest() {
       ]
     },
     {
+      id: 5,
       questionText: "5. What is 2 + 2 * 6?",
       answerOptions: [
         { answerText: "18", isCorrect: false },
@@ -66,8 +71,8 @@ export default function AptitudeTest() {
     } else {
       setShowScore(true);
       setTimeout(() => {
-        window.location.href = "/candidate-home";
-      }, 10000);
+        window.location.href = "/candidate-register";
+      }, 5000);
     }
   };
 
@@ -75,8 +80,8 @@ export default function AptitudeTest() {
     <div className="AptitudeTest">
       {showScore ? (
         <div className="score-section">
-          You scored {score} out of 100 (You are automatically navigated to home
-          page)
+          You scored {score} out of 100 (You are automatically being navigated
+          to the home page)
         </div>
       ) : (
         <>
@@ -91,6 +96,8 @@ export default function AptitudeTest() {
           <div className="answer-section">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
               <button
+                key={answerOption.answerText}
+                className="answer-option-btn"
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
               >
                 {answerOption.answerText}

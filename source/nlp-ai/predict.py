@@ -29,7 +29,6 @@ app = Flask(__name__)
 def predict():
     text = request.json['introduction']
     response = {"prediction": predict_personality(text)}
-    # return "OK"
     return jsonify(response)
 
 app.run()

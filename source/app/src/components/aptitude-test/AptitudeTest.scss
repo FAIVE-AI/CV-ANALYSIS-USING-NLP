@@ -1,33 +1,42 @@
+@use "../../colors.scss" as colors;
 
 .AptitudeTest {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    font-size: 30px;
-    width: 100%; 
-    flex-direction: column;
-  }
-  
-  .question-section {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .answer-section {
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
-    text-align: center;
-  }
-  
-  button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #f0f0f0;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 30px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.question-section {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.answer-section {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  text-align: center;
+}
+
+.answer-option-btn {
+  padding: 10px;
+  border: 2px solid colors.$primary-blue;
+  border-radius: 5px;
+  min-width: 75px;
+  background-color: colors.$primary-gold;
+  color: colors.$primary-blue;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.answer-option-btn:hover {
+  border: 2px solid colors.$primary-gold;
+  min-width: 75px;
+  -webkit-box-shadow: 0 0 10px colors.$primary-gold;
+  box-shadow: 0 0 20px colors.$primary-gold;
+}

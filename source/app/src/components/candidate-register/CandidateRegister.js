@@ -67,16 +67,19 @@ export default class CandidateRegister extends Component {
                 },
                 () => {
                   console.log(this.state.resumePlainText);
-                  this.setState({
-                    resume: {
-                      introduction: this.getResumeSection("introduction"),
-                      skills: this.getResumeSection("skills"),
-                      education: this.getResumeSection("education"),
-                      experience: this.getResumeSection("experience")
+                  this.setState(
+                    {
+                      resume: {
+                        introduction: this.getResumeSection("introduction"),
+                        skills: this.getResumeSection("skills"),
+                        education: this.getResumeSection("education"),
+                        experience: this.getResumeSection("experience")
+                      }
+                    },
+                    () => {
+                      this.getPersonalityTypes();
                     }
-                  }, () => {
-                    this.getPersonalityTypes();
-                  });
+                  );
                 }
               );
             });
@@ -210,22 +213,6 @@ export default class CandidateRegister extends Component {
           <div className="candidate-register-score-item">
             <label
               className="candidate-register-label"
-              id="candidate-register-personality-test-label"
-            >
-              Personality:
-            </label>
-            <a
-              id="candidate-register-personality-test-input"
-              className="candidate-register-test-link"
-              href="www.google.com"
-              target="_blank"
-            >
-              Take the test
-            </a>
-          </div>
-          <div className="candidate-register-score-item">
-            <label
-              className="candidate-register-label"
               id="candidate-register-aptitude-test-label"
             >
               Aptitude:
@@ -234,7 +221,6 @@ export default class CandidateRegister extends Component {
               id="candidate-register-aptitude-test-input"
               className="candidate-register-test-link"
               href="http://localhost:3000/AptitudeTest"
-              target="_blank"
             >
               Take the test
             </a>
