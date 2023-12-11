@@ -26,6 +26,22 @@ export default class CandidateRegister extends Component {
     };
     GlobalWorkerOptions.workerSrc =
       "//cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.worker.min.mjs";
+    this.handleRemoteMessage = this.handleRemoteMessage.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("message", this.handleRemoteMessage);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("message", this.handleRemoteMessage);
+  }
+
+  handleRemoteMessage(event) {
+    if (typeof event.data === "number")
+      this.setState({
+        aptitudeScore: event.data
+      });
   }
 
   updateTextBox = (e) => {
@@ -217,13 +233,20 @@ export default class CandidateRegister extends Component {
             >
               Aptitude:
             </label>
-            <a
-              id="candidate-register-aptitude-test-input"
-              className="candidate-register-test-link"
-              href="http://localhost:3000/AptitudeTest"
-            >
-              Take the test
-            </a>
+            {!this.state.aptitudeScore && (
+              <a
+                id="candidate-register-aptitude-test-input"
+                className="candidate-register-test-link"
+                href="http://localhost:3000/AptitudeTest"
+                target="_blank"
+                rel="opener"
+              >
+                Take the test
+              </a>
+            )}
+            {this.state.aptitudeScore && (
+              <p>You scored {this.state.aptitudeScore} / 100</p>
+            )}
           </div>
         </div>
 

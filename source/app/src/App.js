@@ -1,6 +1,7 @@
 import "./App.scss";
+import { useEffect, useState } from "react";
 import Home from "./components/home/Home";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import LoginRegister from "./components/login-register/LoginRegister";
 import CandidateHome from "./components/candidate-home/CandidateHome";
 import HRExecHome from "./components/hr-exec-home/HRExecHome";
@@ -10,9 +11,20 @@ import HrRanklist from "./components/hr-ranklist/HrRanklist";
 import CandidateHeader from "./components/shared/candidate-header/CandidateHeader";
 
 function App() {
+  const location = useLocation();
+  const [locationState, setLocationState] = useState(location);
+
+  useEffect(() => {
+    setLocationState(location);
+  }, [location]);
+
   return (
     <div>
-      <CandidateHeader></CandidateHeader>
+      {(locationState.pathname === "/candidate-home" ||
+        locationState.pathname === "/open-jobs" ||
+        locationState.pathname === "/my-applications") && (
+        <CandidateHeader></CandidateHeader>
+      )}
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route

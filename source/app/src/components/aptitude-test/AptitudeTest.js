@@ -70,8 +70,9 @@ export default function AptitudeTest() {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
+      window.opener.postMessage(score, "*");
       setTimeout(() => {
-        window.location.href = "/candidate-register";
+        window.close();
       }, 5000);
     }
   };
@@ -80,8 +81,8 @@ export default function AptitudeTest() {
     <div className="AptitudeTest">
       {showScore ? (
         <div className="score-section">
-          You scored {score} out of 100 (You are automatically being navigated
-          to the home page)
+          You scored {score} out of 100 (You can now navigate to the previous
+          page. This page will automatically close.)
         </div>
       ) : (
         <>
