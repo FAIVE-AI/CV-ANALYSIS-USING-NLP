@@ -24,7 +24,7 @@ export default class CandidateHome extends Component {
             className="candidate-home-input"
             name="name"
             type="text"
-            value={this.props.candidateDetails?.name}
+            value={this.props.candidateDetails?.candidateName}
             disabled
           ></input>
         </div>
@@ -42,7 +42,7 @@ export default class CandidateHome extends Component {
             className="candidate-home-input"
             name="email"
             type="email"
-            value={this.props.candidateDetails?.email}
+            value={this.props.candidateDetails?.emailId}
             disabled
           ></input>
         </div>
@@ -55,7 +55,11 @@ export default class CandidateHome extends Component {
               Personality:
             </label>
             <label>
-              According to our AI system, your personality types are:{" "}
+              According to our AI system, your personality types are:
+            </label>
+            <br></br>
+            <label className="candidate-home-values">
+              {this.props.candidateDetails?.personalityTypes}
             </label>
           </div>
           <div className="candidate-home-score-item">
@@ -66,6 +70,10 @@ export default class CandidateHome extends Component {
               Aptitude:
             </label>
             <label>This is your aptitude score: </label>
+            <br></br>
+            <label className="candidate-home-values">
+              {this.props.candidateDetails?.aptitudeScore} / 100
+            </label>
           </div>
         </div>
       </div>

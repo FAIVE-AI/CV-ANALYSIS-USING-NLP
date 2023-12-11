@@ -47,7 +47,7 @@ router.post("/register", (req, res) => {
   try {
     executeDBQuery(
       "INSERT",
-      "INSERT INTO Candidate VALUES (@CandidateName, @EmailID, @PersonalityScore, @AptitudeScore, @LoginPassword)",
+      "INSERT INTO Candidate VALUES (@CandidateName, @EmailID, @PersonalityTypes, @AptitudeScore, @LoginPassword)",
       queryParameters
     ).then((result) => {
       if (result) {

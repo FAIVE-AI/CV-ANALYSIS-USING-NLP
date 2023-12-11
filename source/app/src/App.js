@@ -13,10 +13,16 @@ import CandidateHeader from "./components/shared/candidate-header/CandidateHeade
 function App() {
   const location = useLocation();
   const [locationState, setLocationState] = useState(location);
+  const [candidateState, setCandidateState] = useState(null);
 
   useEffect(() => {
     setLocationState(location);
   }, [location]);
+
+  const setCandidate = (candidate) => {
+    console.log("candidate from App.js", candidate);
+    setCandidateState(candidate);
+  };
 
   return (
     <div>
@@ -37,12 +43,16 @@ function App() {
         ></Route>
         <Route
           path="/candidate-home"
-          element={<CandidateHome></CandidateHome>}
+          element={
+            <CandidateHome candidateDetails={candidateState}></CandidateHome>
+          }
         ></Route>
         <Route path="/hr-exec-home" element={<HRExecHome></HRExecHome>}></Route>
         <Route
           path="/candidate-register"
-          element={<CandidateRegister></CandidateRegister>}
+          element={
+            <CandidateRegister setCandidate={setCandidate}></CandidateRegister>
+          }
         ></Route>
         <Route
           path="/AptitudeTest"

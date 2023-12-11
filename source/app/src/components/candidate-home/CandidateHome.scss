@@ -45,7 +45,7 @@ h1 {
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-top: 75px;
+  margin-top: 40px;
 }
 
 .candidate-home-score-item {
@@ -112,4 +112,9 @@ a:any-link {
 
 #candidate-home-error-message {
   margin-top: 40px;
+}
+
+.candidate-home-values {
+  font-size: 20px;
+  font-weight: bold;
 }

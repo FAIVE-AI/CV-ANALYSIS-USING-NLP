@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { AuthService } from "../../services/auth-service";
 import "./CandidateRegister.scss";
 import { Component } from "react";
@@ -11,7 +12,6 @@ export default class CandidateRegister extends Component {
       name: "",
       email: "",
       password: "",
-      personalityScore: null,
       aptitudeScore: null,
       resumePlainText: "",
       resume: {
@@ -163,11 +163,18 @@ export default class CandidateRegister extends Component {
     const candidate = {
       candidateName: this.state.name,
       emailId: this.state.email,
-      personalityScore: this.state.personalityScore,
+      personalityTypes: this.state.personalityTypes.join(),
       aptitudeScore: this.state.aptitudeScore,
       loginPassword: this.state.password
     };
-    AuthService.register(candidate).then((response) => console.log(response));
+    AuthService.register(candidate).then((response) => {
+      if (response.ok) {
+        this.props.setCandidate(candidate);
+        setTimeout(() => {
+          document.getElementById("candidate-register-nav-button").click();
+        }, 2000);
+      }
+    });
   };
 
   render() {
@@ -292,6 +299,16 @@ export default class CandidateRegister extends Component {
             Something went wrong. Please try again.
           </p>
         )}
+
+        <NavLink
+          id="candidate-register-login-navlink"
+          to="/candidate-home"
+          hidden
+        >
+          <button id="candidate-register-nav-button" type="button" hidden>
+            Navigate
+          </button>
+        </NavLink>
       </div>
     );
   }
