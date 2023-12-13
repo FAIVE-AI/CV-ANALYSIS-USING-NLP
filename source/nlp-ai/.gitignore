@@ -1,0 +1,5 @@
+data/pretrained
+data/essays/
+.ipynb_checkpoints
+data/training/typed_comments.csv
+docu/papers

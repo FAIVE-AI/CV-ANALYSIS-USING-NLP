@@ -14,12 +14,21 @@ router.post("/login/:type", (req, res) => {
     executeDBQuery(
       "SELECT",
       req.params.type === "candidate"
-        ? `SELECT LoginPassword FROM Candidate WHERE ID=${req.body.id};`
-        : `SELECT LoginPassword FROM HRExecutive WHERE ID=${req.body.id};`
+        ? `SELECT * FROM Candidate WHERE ID=${req.body.id};`
+        : `SELECT * FROM HRExecutive WHERE ID=${req.body.id};`
     ).then((results) => {
       const result = results[0];
       if (req.body.password === result?.LoginPassword?.value) {
-        res.send({ authenticated: true });
+        res.send({
+          authenticated: true,
+          candidateDetails: {
+            id: result?.ID.value,
+            candidateName: result?.CandidateName.value,
+            emailId: result?.EmailID.value,
+            personalityTypes: result?.PersonalityTypes.value,
+            aptitudeScore: result?.AptitudeScore.value
+          }
+        });
       } else {
         res.status(401).send({
           authenticated: false,
@@ -47,7 +56,7 @@ router.post("/register", (req, res) => {
   try {
     executeDBQuery(
       "INSERT",
-      "INSERT INTO Candidate VALUES (@CandidateName, @EmailID, @PersonalityScore, @AptitudeScore, @LoginPassword)",
+      "INSERT INTO Candidate VALUES (@CandidateName, @EmailID, @PersonalityTypes, @AptitudeScore, @LoginPassword)",
       queryParameters
     ).then((result) => {
       if (result) {
@@ -59,38 +68,6 @@ router.post("/register", (req, res) => {
           error: "Something went wrong."
         });
       }
-    });
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-
-//Created for JobPostings by PC
-router.get("/hr-ranklist/", (req, res) => {
-  try {
-    executeDBQuery(
-      "SELECT" , 
-      "SELECT * FROM JobPosting",
-    ).then((results) => {
-
-      res.send(results);
-
-    });
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-
-//Created for RanklistList Table by PC
-router.get("/candidate-list/", (req, res) => {
-  try {
-    executeDBQuery(
-      "SELECT" , 
-      "SELECT * FROM JobCandidate"
-    ).then((results) => {
-
-      res.send(results);
-
     });
   } catch (error) {
     res.status(500).send(error);

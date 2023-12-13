@@ -29,10 +29,5 @@ export const AuthService = {
         "Content-Type": "application/json"
       }
     });
-  },
-
-
-
+  }
 };
-
-

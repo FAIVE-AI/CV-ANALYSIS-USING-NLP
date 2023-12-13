@@ -7,9 +7,9 @@ const CandidateMapper = {
     columnName: "EmailID",
     dataType: "VarChar"
   },
-  personalityScore: {
-    columnName: "PersonalityScore",
-    dataType: "Int"
+  personalityTypes: {
+    columnName: "PersonalityTypes",
+    dataType: "VarChar"
   },
   aptitudeScore: {
     columnName: "AptitudeScore",
