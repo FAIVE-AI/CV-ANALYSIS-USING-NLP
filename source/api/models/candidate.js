@@ -2,13 +2,13 @@ class Candidate {
   id;
   candidateName;
   emailID;
-  personalityScore;
+  personalityTypes;
   aptitudeScore;
-  constructor(id, candidateName, emailID, personalityScore, aptitudeScore) {
+  constructor(id, candidateName, emailID, personalityTypes, aptitudeScore) {
     this.id = id;
     this.candidateName = candidateName;
     this.emailID = emailID;
-    this.personalityScore = personalityScore;
+    this.personalityTypes = personalityTypes;
     this.aptitudeScore = aptitudeScore;
   }
 }

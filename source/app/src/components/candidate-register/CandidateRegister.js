@@ -1,7 +1,9 @@
+import { NavLink } from "react-router-dom";
 import { AuthService } from "../../services/auth-service";
 import "./CandidateRegister.scss";
 import { Component } from "react";
 import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
+import { AIService } from "../../services/ai-service";
 
 export default class CandidateRegister extends Component {
   constructor(props) {
@@ -10,7 +12,6 @@ export default class CandidateRegister extends Component {
       name: "",
       email: "",
       password: "",
-      personalityScore: null,
       aptitudeScore: null,
       resumePlainText: "",
       resume: {
@@ -19,11 +20,28 @@ export default class CandidateRegister extends Component {
         education: "",
         experience: ""
       },
+      personalityTypes: [],
       uploadedFileName: "",
       showErrorMessage: false
     };
     GlobalWorkerOptions.workerSrc =
       "//cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.worker.min.mjs";
+    this.handleRemoteMessage = this.handleRemoteMessage.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("message", this.handleRemoteMessage);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("message", this.handleRemoteMessage);
+  }
+
+  handleRemoteMessage(event) {
+    if (typeof event.data === "number")
+      this.setState({
+        aptitudeScore: event.data
+      });
   }
 
   updateTextBox = (e) => {
@@ -75,10 +93,7 @@ export default class CandidateRegister extends Component {
                       }
                     },
                     () => {
-                      console.log("intro", this.state.resume.introduction);
-                      console.log("skills", this.state.resume.skills);
-                      console.log("education", this.state.resume.education);
-                      console.log("experience", this.state.resume.experience);
+                      this.getPersonalityTypes();
                     }
                   );
                 }
@@ -104,24 +119,62 @@ export default class CandidateRegister extends Component {
       case "education":
         return this.state.resumePlainText
           .split("EDUCATION")[1]
-          .split("E XPER IENCE")[0];
+          .split("EXPERIENCE")[0];
       case "experience":
-        return this.state.resumePlainText.split("E XPER IENCE")[1];
+        return this.state.resumePlainText.split("EXPERIENCE")[1];
 
       default:
         break;
     }
   };
 
+  getPersonalityTypes = () => {
+    AIService.getPersonalityTypes(this.state.resume.introduction).then(
+      (response) => {
+        response.json().then((result) => {
+          let personalityTypes = [];
+          if (result.prediction[0]) {
+            personalityTypes.push("Extraversion");
+          }
+          if (result.prediction[1]) {
+            personalityTypes.push("Agreeableness");
+          }
+          if (result.prediction[2]) {
+            personalityTypes.push("Conscientiousness");
+          }
+          if (result.prediction[3]) {
+            personalityTypes.push("Openness");
+          }
+
+          this.setState(
+            {
+              personalityTypes: personalityTypes
+            },
+            () => {
+              console.log(this.state.personalityTypes);
+            }
+          );
+        });
+      }
+    );
+  };
+
   createCandidate = () => {
     const candidate = {
       candidateName: this.state.name,
       emailId: this.state.email,
-      personalityScore: this.state.personalityScore,
+      personalityTypes: this.state.personalityTypes.join(),
       aptitudeScore: this.state.aptitudeScore,
       loginPassword: this.state.password
     };
-    AuthService.register(candidate).then((response) => console.log(response));
+    AuthService.register(candidate).then((response) => {
+      if (response.ok) {
+        this.props.setCandidate(candidate);
+        setTimeout(() => {
+          document.getElementById("candidate-register-nav-button").click();
+        }, 2000);
+      }
+    });
   };
 
   render() {
@@ -206,34 +259,24 @@ export default class CandidateRegister extends Component {
           <div className="candidate-register-score-item">
             <label
               className="candidate-register-label"
-              id="candidate-register-personality-test-label"
-            >
-              Personality:
-            </label>
-            <a
-              id="candidate-register-personality-test-input"
-              className="candidate-register-test-link"
-              href="www.google.com"
-              target="_blank"
-            >
-              Take the test
-            </a>
-          </div>
-          <div className="candidate-register-score-item">
-            <label
-              className="candidate-register-label"
               id="candidate-register-aptitude-test-label"
             >
               Aptitude:
             </label>
-            <a
-              id="candidate-register-aptitude-test-input"
-              className="candidate-register-test-link"
-              href="www.google.com"
-              target="_blank"
-            >
-              Take the test
-            </a>
+            {!this.state.aptitudeScore && (
+              <a
+                id="candidate-register-aptitude-test-input"
+                className="candidate-register-test-link"
+                href="http://localhost:3000/AptitudeTest"
+                target="_blank"
+                rel="opener"
+              >
+                Take the test
+              </a>
+            )}
+            {this.state.aptitudeScore && (
+              <p>You scored {this.state.aptitudeScore} / 100</p>
+            )}
           </div>
         </div>
 
@@ -256,6 +299,16 @@ export default class CandidateRegister extends Component {
             Something went wrong. Please try again.
           </p>
         )}
+
+        <NavLink
+          id="candidate-register-login-navlink"
+          to="/candidate-home"
+          hidden
+        >
+          <button id="candidate-register-nav-button" type="button" hidden>
+            Navigate
+          </button>
+        </NavLink>
       </div>
     );
   }

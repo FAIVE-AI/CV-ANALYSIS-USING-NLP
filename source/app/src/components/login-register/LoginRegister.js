@@ -9,7 +9,8 @@ export default class LoginRegister extends Component {
     this.state = {
       id: "",
       password: "",
-      showErrorMessage: false
+      showErrorMessage: false,
+      candidateDetails: null
     };
   }
 
@@ -30,7 +31,21 @@ export default class LoginRegister extends Component {
       password: this.state.password
     }).then((response) => {
       if (response.ok) {
-        document.getElementById("login-register-nav-button").click();
+        console.log(response);
+        response.json().then((result) => {
+          console.log(result);
+          this.setState(
+            {
+              candidateDetails: result.candidateDetails
+            },
+            () => {
+              this.props.setCandidate(result.candidateDetails);
+              setTimeout(() => {
+                document.getElementById("login-register-nav-button").click();
+              }, 1000);
+            }
+          );
+        });
       } else {
         this.setState(
           {
