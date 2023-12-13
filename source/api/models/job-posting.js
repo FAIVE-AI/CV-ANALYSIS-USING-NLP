@@ -21,7 +21,9 @@ class JobPosting {
     skills,
     personality,
     education,
-    experience
+    experience,
+    jobDescription,
+    jobQualifications
   ) {
     this.id = id;
     this.hrId = hrId;
@@ -34,6 +36,8 @@ class JobPosting {
     this.personality = personality;
     this.education = education;
     this.experience = experience;
+    this.jobDescription = jobDescription;
+    this.jobQualifications = jobQualifications;
   }
 }
 

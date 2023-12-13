@@ -7,6 +7,8 @@ import CandidateHome from "./components/candidate-home/CandidateHome";
 import HRExecHome from "./components/hr-exec-home/HRExecHome";
 import CandidateRegister from "./components/candidate-register/CandidateRegister";
 import AptitudeTest from "./components/aptitude-test/AptitudeTest";
+import HRJobCreation from "./components/hr-job-creation/HRJobCreation";
+import HRViewJobs from "./components/hr-view-jobs/HRViewJobs";
 import HrRanklist from "./components/hr-ranklist/HrRanklist";
 import CandidateHeader from "./components/shared/candidate-header/CandidateHeader";
 
@@ -60,6 +62,18 @@ function App() {
           }
         ></Route>
         <Route
+          path="/hr-job-create"
+          element={<HRJobCreation hrDetails={{ name: "CK", id: 9000001 }}></HRJobCreation>}
+        ></Route>
+        <Route
+          path="/hr-view-jobs"
+          element={<HRViewJobs 
+          hrDetails={{ name: "CK", id: 9000001 }} 
+          jobDetails={{ jobTitle: "Software Developer"}} 
+          candidateDetails={{name:"Sairaj",skillsetscore:"59",personalityscore:"75",aptitudescore:"80",overallscore:"78",personalitydescription:"Nice guy",skillset:"Python",personality:"Leader",experience:"4.5 Years"}}>
+          </HRViewJobs>}
+        ></Route>
+          <Route
           path="/AptitudeTest"
           element={<AptitudeTest></AptitudeTest>}
         ></Route>
