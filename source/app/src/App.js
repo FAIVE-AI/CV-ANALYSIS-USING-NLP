@@ -35,11 +35,16 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route
           path="/candidate-login"
-          element={<LoginRegister isCandidate={true}></LoginRegister>}
+          element={<LoginRegister setCandidate={setCandidate} isCandidate={true}></LoginRegister>}
         ></Route>
         <Route
           path="/hr-exec-login"
-          element={<LoginRegister isCandidate={false}></LoginRegister>}
+          element={
+            <LoginRegister
+              setCandidate={setCandidate}
+              isCandidate={false}
+            ></LoginRegister>
+          }
         ></Route>
         <Route
           path="/candidate-home"

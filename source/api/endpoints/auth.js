@@ -14,12 +14,21 @@ router.post("/login/:type", (req, res) => {
     executeDBQuery(
       "SELECT",
       req.params.type === "candidate"
-        ? `SELECT LoginPassword FROM Candidate WHERE ID=${req.body.id};`
-        : `SELECT LoginPassword FROM HRExecutive WHERE ID=${req.body.id};`
+        ? `SELECT * FROM Candidate WHERE ID=${req.body.id};`
+        : `SELECT * FROM HRExecutive WHERE ID=${req.body.id};`
     ).then((results) => {
       const result = results[0];
       if (req.body.password === result?.LoginPassword?.value) {
-        res.send({ authenticated: true });
+        res.send({
+          authenticated: true,
+          candidateDetails: {
+            id: result?.ID.value,
+            candidateName: result?.CandidateName.value,
+            emailId: result?.EmailID.value,
+            personalityTypes: result?.PersonalityTypes.value,
+            aptitudeScore: result?.AptitudeScore.value
+          }
+        });
       } else {
         res.status(401).send({
           authenticated: false,
