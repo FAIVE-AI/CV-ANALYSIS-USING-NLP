@@ -1,21 +1,21 @@
 @use "../../colors.scss" as colors;
 
-.hr-exec-home-title {
-  margin: 30px auto;
+#candidate-view-jobs-title {
+  margin: 50px auto;
   text-align: center;
 }
 
-.hr-exec-home-table-row:hover {
+.candidate-view-jobs-table-row:hover {
   cursor: pointer;
   color: cadetblue;
 }
 
-.hr-exec-home-table-row-selected {
+.candidate-view-jobs-table-row-selected {
   cursor: grab;
   color: chocolate !important;
 }
 
-#hr-exec-home-job-description-container {
+#candidate-view-jobs-job-description-container {
   margin: 30px 200px;
   padding-bottom: 30px;
   border: 1px dashed colors.$primary-gold;
@@ -26,30 +26,30 @@
   justify-content: center;
 }
 
-#hr-exec-home-job-description {
+#candidate-view-jobs-job-description {
   width: 50%;
 }
 
-.hr-exec-home-job-description-row {
+.candidate-view-jobs-job-description-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-#hr-exec-home-job-description div {
+#candidate-view-jobs-job-description div {
   font-size: large;
   margin: 5px;
 }
 
-#hr-exec-home-job-description-button-row {
+#candidate-view-jobs-job-description-button-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-#hr-exec-home-job-apply-btn {
+#candidate-view-jobs-job-apply-btn {
   margin-top: 20px;
   border: 1px solid black;
   padding: 0;
@@ -64,12 +64,8 @@
   cursor: pointer;
 }
 
-#hr-exec-home-job-apply-btn:hover {
+#candidate-view-jobs-job-apply-btn:hover {
   border: none;
   -webkit-box-shadow: 0 0 10px colors.$primary-gold;
   box-shadow: 0 0 20px colors.$primary-gold;
-}
-
-#hr-exec-home-candidate-table-container {
-    margin-top: 30px;
 }

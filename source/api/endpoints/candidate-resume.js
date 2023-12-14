@@ -27,7 +27,7 @@ router.post("/submit", (req, res) => {
     ).then((result) => {
       if (result) {
         res.status(200).send({
-          message: "Successfully added candidate."
+          message: "Successfully added resume."
         });
       } else {
         res.status(500).send({

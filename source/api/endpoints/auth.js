@@ -22,11 +22,12 @@ router.post("/login/:type", (req, res) => {
         res.send({
           authenticated: true,
           candidateDetails: {
-            id: result?.ID.value,
-            candidateName: result?.CandidateName.value,
-            emailId: result?.EmailID.value,
-            personalityTypes: result?.PersonalityTypes.value,
-            aptitudeScore: result?.AptitudeScore.value
+            id: result?.ID?.value,
+            candidateName: result?.CandidateName?.value,
+            emailId: result?.EmailID?.value,
+            personalityTypes: result?.PersonalityTypes?.value,
+            aptitudeScore: result?.AptitudeScore?.value,
+            hrName: result?.HRName?.value
           }
         });
       } else {
