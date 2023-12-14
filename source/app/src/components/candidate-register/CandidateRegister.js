@@ -170,23 +170,25 @@ export default class CandidateRegister extends Component {
     };
     AuthService.register(candidate).then((response) => {
       if (response.ok) {
-        ResumeService.postResume({
-          candidateId: candidate.id,
-          skills: this.state.resume.skills,
-          personality: this.state.personalityTypes,
-          education: this.state.resume.education,
-          experience: this.state.resume.experience.split(" ")[0]
-        }).then((response) => {
-          if (response.ok) {
-            response.json().then(() => {
-              this.props.setCandidate(candidate);
-              setTimeout(() => {
-                document
-                  .getElementById("candidate-register-nav-button")
-                  .click();
-              }, 2000);
-            });
-          }
+        response.json().then((result) => {
+          ResumeService.postResume({
+            candidateId: result.candidateId,
+            skills: this.state.resume.skills.trim(),
+            personality: this.state.personalityTypes.join(),
+            education: this.state.resume.education,
+            experience: this.state.resume.experience.trimStart().split(" ")[0]
+          }).then((response) => {
+            if (response.ok) {
+              response.json().then(() => {
+                this.props.setCandidate(candidate);
+                setTimeout(() => {
+                  document
+                    .getElementById("candidate-register-nav-button")
+                    .click();
+                }, 2000);
+              });
+            }
+          });
         });
       }
     });
