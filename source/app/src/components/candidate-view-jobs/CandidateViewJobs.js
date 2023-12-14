@@ -36,8 +36,15 @@ export default class CandidateViewJobs extends Component {
   };
 
   applyJob = () => {
-    // JobService
-  }
+    JobService.applyJob(
+      this.state.selectedJob.id,
+      this.props.candidateDetails.id
+    ).then((response) => {
+      if (response.ok) {
+        console.log("Applied");
+      }
+    });
+  };
 
   render() {
     return (
@@ -99,7 +106,12 @@ export default class CandidateViewJobs extends Component {
                 </div>
               </div>
               <div id="candidate-view-jobs-job-description-button-row">
-                <button id="candidate-view-jobs-job-apply-btn" onClick={this.applyJob}>Apply!</button>
+                <button
+                  id="candidate-view-jobs-job-apply-btn"
+                  onClick={this.applyJob}
+                >
+                  Apply!
+                </button>
               </div>
             </div>
           </div>

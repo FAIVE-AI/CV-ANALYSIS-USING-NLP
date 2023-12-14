@@ -67,7 +67,11 @@ function App() {
         ></Route>
         <Route
           path="/open-jobs"
-          element={<CandidateViewJobs></CandidateViewJobs>}
+          element={
+            <CandidateViewJobs
+              candidateDetails={candidateState}
+            ></CandidateViewJobs>
+          }
         ></Route>
         <Route path="/hr-exec-home" element={<HRExecHome></HRExecHome>}></Route>
         <Route

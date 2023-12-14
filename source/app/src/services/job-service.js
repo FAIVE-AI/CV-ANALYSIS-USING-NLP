@@ -12,6 +12,18 @@ export const JobService = {
       }
     });
   },
+  applyJob: (jobId, candidateId) => {
+    return fetch(jobEndpoint + "/apply", {
+      method: "POST",
+      body: JSON.stringify({
+        jobId: jobId,
+        candidateId: candidateId
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+  },
   getAllJobs: () => {
     return fetch(jobEndpoint + "/all", {
       headers: {
