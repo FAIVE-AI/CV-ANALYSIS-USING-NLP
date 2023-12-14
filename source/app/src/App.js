@@ -11,6 +11,7 @@ import HRJobCreation from "./components/hr-job-creation/HRJobCreation";
 import HRViewJobs from "./components/hr-view-jobs/HRViewJobs";
 import HrRanklist from "./components/hr-ranklist/HrRanklist";
 import CandidateHeader from "./components/shared/candidate-header/CandidateHeader";
+import CandidateViewJobs from "./components/candidate-view-jobs/CandidateViewJobs";
 
 function App() {
   const location = useLocation();
@@ -37,7 +38,12 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route
           path="/candidate-login"
-          element={<LoginRegister setCandidate={setCandidate} isCandidate={true}></LoginRegister>}
+          element={
+            <LoginRegister
+              setCandidate={setCandidate}
+              isCandidate={true}
+            ></LoginRegister>
+          }
         ></Route>
         <Route
           path="/hr-exec-login"
@@ -54,6 +60,10 @@ function App() {
             <CandidateHome candidateDetails={candidateState}></CandidateHome>
           }
         ></Route>
+        <Route
+          path="/open-jobs"
+          element={<CandidateViewJobs></CandidateViewJobs>}
+        ></Route>
         <Route path="/hr-exec-home" element={<HRExecHome></HRExecHome>}></Route>
         <Route
           path="/candidate-register"
@@ -63,17 +73,33 @@ function App() {
         ></Route>
         <Route
           path="/hr-job-create"
-          element={<HRJobCreation hrDetails={{ name: "CK", id: 9000001 }}></HRJobCreation>}
+          element={
+            <HRJobCreation
+              hrDetails={{ name: "CK", id: 9000001 }}
+            ></HRJobCreation>
+          }
         ></Route>
         <Route
           path="/hr-view-jobs"
-          element={<HRViewJobs 
-          hrDetails={{ name: "CK", id: 9000001 }} 
-          jobDetails={{ jobTitle: "Software Developer"}} 
-          candidateDetails={{name:"Sairaj",skillsetscore:"59",personalityscore:"75",aptitudescore:"80",overallscore:"78",personalitydescription:"Nice guy",skillset:"Python",personality:"Leader",experience:"4.5 Years"}}>
-          </HRViewJobs>}
+          element={
+            <HRViewJobs
+              hrDetails={{ name: "CK", id: 9000001 }}
+              jobDetails={{ jobTitle: "Software Developer" }}
+              candidateDetails={{
+                name: "Sairaj",
+                skillsetscore: "59",
+                personalityscore: "75",
+                aptitudescore: "80",
+                overallscore: "78",
+                personalitydescription: "Nice guy",
+                skillset: "Python",
+                personality: "Leader",
+                experience: "4.5 Years"
+              }}
+            ></HRViewJobs>
+          }
         ></Route>
-          <Route
+        <Route
           path="/AptitudeTest"
           element={<AptitudeTest></AptitudeTest>}
         ></Route>

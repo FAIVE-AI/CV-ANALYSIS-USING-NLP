@@ -22,11 +22,12 @@ router.post("/login/:type", (req, res) => {
         res.send({
           authenticated: true,
           candidateDetails: {
-            id: result?.ID.value,
-            candidateName: result?.CandidateName.value,
-            emailId: result?.EmailID.value,
-            personalityTypes: result?.PersonalityTypes.value,
-            aptitudeScore: result?.AptitudeScore.value
+            id: result?.ID?.value,
+            candidateName: result?.CandidateName?.value,
+            emailId: result?.EmailID?.value,
+            personalityTypes: result?.PersonalityTypes?.value,
+            aptitudeScore: result?.AptitudeScore?.value,
+            hrName: result?.HRName?.value
           }
         });
       } else {
@@ -74,36 +75,4 @@ router.post("/register", (req, res) => {
   }
 });
 
-
-//Created for JobPostings by PC
-router.get("/hr-ranklist/", (req, res) => {
-  try {
-    executeDBQuery(
-      "SELECT" , 
-      "SELECT * FROM JobPosting",
-    ).then((results) => {
-
-      res.send(results);
-
-    });
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-
-//Created for RanklistList Table by PC
-router.get("/candidate-list/", (req, res) => {
-  try {
-    executeDBQuery(
-      "SELECT" , 
-      "SELECT * FROM JobCandidate"
-    ).then((results) => {
-
-      res.send(results);
-
-    });
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
 module.exports = router;

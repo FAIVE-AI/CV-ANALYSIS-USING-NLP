@@ -2,7 +2,7 @@ class JobPosting {
   id;
   hrId;
   title;
-  jobLocation;
+  location;
   postedDate;
   lastDate;
   wages;
@@ -14,7 +14,7 @@ class JobPosting {
     id,
     hrId,
     title,
-    jobLocation,
+    location,
     postedDate,
     lastDate,
     wages,
@@ -28,7 +28,7 @@ class JobPosting {
     this.id = id;
     this.hrId = hrId;
     this.title = title;
-    this.jobLocation = jobLocation;
+    this.location = location;
     this.postedDate = postedDate;
     this.lastDate = lastDate;
     this.wages = wages;

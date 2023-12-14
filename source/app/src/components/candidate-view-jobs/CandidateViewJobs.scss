@@ -1,0 +1,71 @@
+@use "../../colors.scss" as colors;
+
+#candidate-view-jobs-title {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.candidate-view-jobs-table-row:hover {
+  cursor: pointer;
+  color: cadetblue;
+}
+
+.candidate-view-jobs-table-row-selected {
+  cursor: grab;
+  color: chocolate !important;
+}
+
+#candidate-view-jobs-job-description-container {
+  margin: 30px 200px;
+  padding-bottom: 30px;
+  border: 1px dashed colors.$primary-gold;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#candidate-view-jobs-job-description {
+  width: 50%;
+}
+
+.candidate-view-jobs-job-description-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#candidate-view-jobs-job-description div {
+  font-size: large;
+  margin: 5px;
+}
+
+#candidate-view-jobs-job-description-button-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#candidate-view-jobs-job-apply-btn {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 0;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 250px;
+  min-height: 45px;
+  background-color: colors.$primary-gold;
+  color: colors.$primary-blue;
+  cursor: pointer;
+}
+
+#candidate-view-jobs-job-apply-btn:hover {
+  border: none;
+  -webkit-box-shadow: 0 0 10px colors.$primary-gold;
+  box-shadow: 0 0 20px colors.$primary-gold;
+}

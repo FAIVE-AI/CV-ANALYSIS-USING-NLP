@@ -9,7 +9,7 @@ export default class HRJobCreation extends Component {
         this.state = {
           hrDetails: {name:""},
           title: "",
-          joblocation: "",
+          location: "",
           lastdate:"",
           salary:"",
           jobdescription:"",
@@ -27,7 +27,7 @@ export default class HRJobCreation extends Component {
     
         method({
           title: this.state.title,
-          joblocation: this.state.joblocation,
+          location: this.state.location,
           lastdate:this.state.lastdate,
           salary: this.state.salary,
           jobdescription:this.state.jobdescription,
@@ -91,7 +91,7 @@ export default class HRJobCreation extends Component {
                         <select 
                         className = "job-posting-input"
                         id="job-post-location"
-                        value={this.state.joblocation}
+                        value={this.state.location}
                         onChange={this.updateTextBox}>
                             <option>Toronto</option>
                             <option>Vancouver</option>
