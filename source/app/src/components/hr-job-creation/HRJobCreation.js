@@ -55,28 +55,6 @@ export default class HRJobCreation extends Component {
   render() {
     return (
       <div>
-        <div id="header-container">
-          <label name="hr-name" id="hr-name">
-            Welcome, {this.props.hrDetails?.hrName}
-          </label>
-          <a href="/hr-view-jobs">
-            <span
-              id="hr-button"
-              className="hr-nav-button-container hr-view-create-page"
-            >
-              View Posted Jobs
-            </span>
-          </a>
-          <a href="/hr-job-create">
-            <span
-              id="hr-button"
-              className="hr-nav-button-container hr-post-create-page"
-            >
-              Post New Job
-            </span>
-          </a>
-        </div>
-        <hr />
         <div id="hr-form-body-container">
           <div className="job-field-container">
             <label className="hr-form-label" htmlFor="job-post-title">
