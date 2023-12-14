@@ -10,7 +10,8 @@ export default class LoginRegister extends Component {
       id: "",
       password: "",
       showErrorMessage: false,
-      candidateDetails: null
+      candidateDetails: null,
+      hrDetails: {}
     };
   }
 
@@ -42,7 +43,7 @@ export default class LoginRegister extends Component {
               this.props.setCandidate(result.candidateDetails);
               setTimeout(() => {
                 document.getElementById("login-register-nav-button").click();
-              }, 1000);
+              }, 100);
             }
           );
         });

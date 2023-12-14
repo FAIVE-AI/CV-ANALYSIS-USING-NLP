@@ -4,6 +4,7 @@ import "./CandidateRegister.scss";
 import { Component } from "react";
 import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
 import { AIService } from "../../services/ai-service";
+import { ResumeService } from "../../services/resume-service";
 
 export default class CandidateRegister extends Component {
   constructor(props) {
@@ -169,10 +170,24 @@ export default class CandidateRegister extends Component {
     };
     AuthService.register(candidate).then((response) => {
       if (response.ok) {
-        this.props.setCandidate(candidate);
-        setTimeout(() => {
-          document.getElementById("candidate-register-nav-button").click();
-        }, 2000);
+        ResumeService.postResume({
+          candidateId: candidate.id,
+          skills: this.state.resume.skills,
+          personality: this.state.personalityTypes,
+          education: this.state.resume.education,
+          experience: this.state.resume.experience.split(" ")[0]
+        }).then((response) => {
+          if (response.ok) {
+            response.json().then(() => {
+              this.props.setCandidate(candidate);
+              setTimeout(() => {
+                document
+                  .getElementById("candidate-register-nav-button")
+                  .click();
+              }, 2000);
+            });
+          }
+        });
       }
     });
   };

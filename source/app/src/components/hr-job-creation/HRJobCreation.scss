@@ -1,0 +1,121 @@
+ @use "../../colors.scss" as colors;
+
+//Header section
+#header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top:10px;
+}
+
+#hr-name{
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+#hr-button{
+    min-width: 100px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+#hr-button:hover {
+    border: 1px solid colors.$primary-gold;
+    -webkit-box-shadow: 0 0 10px colors.$primary-gold;
+    box-shadow: 0 0 20px colors.$primary-gold;
+}
+
+.hr-nav-button-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+.hr-view-create-page{
+    background-color: silver;
+    color: colors.$primary-blue;
+}
+
+.hr-post-create-page{
+    background-color: colors.$primary-gold;
+    color: colors.$primary-blue;
+    -webkit-box-shadow: 0 0 10px colors.$primary-gold;
+     box-shadow: 0 0 20px colors.$primary-gold;
+}
+
+//Body section
+#hr-form-body-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:50px;
+}
+
+.job-field-container {
+    min-width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    margin-left:200px;
+    margin-right: 200px;
+}
+
+.hr-form-label{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.job-posting-input {
+  width: 350px;
+  height: 40px;
+  border: 1px solid black;
+  font-size: 30px;
+  font-weight: bold;
+  color: colors.$primary-blue;
+}
+
+.job-posting-multi-input {
+    width: 300px;
+    height: 150px;
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    color: colors.$primary-blue;
+    padding-right: 50px;
+    align-content: left;
+}
+
+
+#job-post-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+#hr-post-job-button{
+    visibility: false;
+}
+
+.hr-submit{
+    background-color: colors.$primary-gold;
+    color: colors.$primary-blue;
+}
+
+#job-posting-error-message {
+    margin-top: 40px;
+    color: red;
+  }
