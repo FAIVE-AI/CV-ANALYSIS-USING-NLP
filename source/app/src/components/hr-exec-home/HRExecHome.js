@@ -34,11 +34,15 @@ export default class HRExecHome extends Component {
   selectJob = (job) => {
     this.setState(
       {
-        selectedJob: job
+        selectedJob: job,
+        selectedCandidate: null
       },
       () => {
         JobService.getAllJobCandidates(job.id).then((response) =>
           response.json().then((result) => {
+            for (let i = 0; i < result.length; i++) {
+              result[i].rank = i + 1;
+            }
             this.setState({
               jobApplicantList: result
             });
@@ -105,10 +109,10 @@ export default class HRExecHome extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.jobApplicantList.map((candidate) => {
+                {this.state.jobApplicantList.map((candidate, index) => {
                   return (
                     <tr
-                      key={candidate.rank}
+                      key={index}
                       className={
                         candidate === this.state.selectedCandidate
                           ? "hr-exec-home-table-row-selected"
@@ -131,21 +135,13 @@ export default class HRExecHome extends Component {
           <div id="hr-exec-home-job-description-container">
             <h2>{this.state.selectedCandidate.candidateName}</h2>
             <div id="hr-exec-home-job-description">
-              <div className="hr-exec-home-job-description-row">
-                <div>Skill Set: {this.state.selectedCandidate.skills}</div>
-                <div>
-                  Aptitude Score: {this.state.selectedCandidate.aptitudeScore}
-                </div>
+              <div>Skill Set: {this.state.selectedCandidate.skills}</div>
+              <div>
+                Aptitude Score: {this.state.selectedCandidate.aptitudeScore}
               </div>
-              <div className="hr-exec-home-job-description-row">
-                <div>Experience: {this.state.selectedCandidate.experience}</div>
-                <div>
-                  Personality: {this.state.selectedCandidate.personality}
-                </div>
-              </div>
-              <div className="hr-exec-home-job-description-row">
-                <div>Score: {this.state.selectedCandidate.matchPercent}</div>
-              </div>
+              <div>Experience: {this.state.selectedCandidate.experience}</div>
+              <div>Personality: {this.state.selectedCandidate.personality}</div>
+              <div>Score: {this.state.selectedCandidate.matchPercent}</div>
               <div id="hr-exec-home-job-description-button-row">
                 <button id="hr-exec-home-job-apply-btn" onClick={this.applyJob}>
                   Call for Interview

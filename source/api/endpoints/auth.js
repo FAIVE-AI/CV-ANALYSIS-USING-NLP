@@ -61,9 +61,17 @@ router.post("/register", (req, res) => {
       queryParameters
     ).then((result) => {
       if (result) {
-        res.status(200).send({
-          message: "Successfully added candidate."
-        });
+        setTimeout(() => {
+          executeDBQuery(
+            "SELECT",
+            "SELECT TOP 1 ID FROM Candidate ORDER BY ID DESC"
+          ).then((result) => {
+            res.status(200).send({
+              candidateId: result[0].ID.value,
+              message: "Successfully added candidate."
+            });
+          });
+        }, 1000);
       } else {
         res.status(500).send({
           error: "Something went wrong."
