@@ -18,5 +18,12 @@ export const JobService = {
         "Content-Type": "application/json"
       }
     });
+  },
+  getAllJobCandidates: (jobId) => {
+    return fetch(jobEndpoint + `/${jobId}/candidates`, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
   }
 };

@@ -12,6 +12,7 @@ import HRViewJobs from "./components/hr-view-jobs/HRViewJobs";
 import HrRanklist from "./components/hr-ranklist/HrRanklist";
 import CandidateHeader from "./components/shared/candidate-header/CandidateHeader";
 import CandidateViewJobs from "./components/candidate-view-jobs/CandidateViewJobs";
+import HRHeader from "./components/shared/hr-header/HrHeader";
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,10 @@ function App() {
         locationState.pathname === "/open-jobs" ||
         locationState.pathname === "/my-applications") && (
         <CandidateHeader></CandidateHeader>
+      )}
+      {(locationState.pathname === "/hr-exec-home" ||
+        locationState.pathname === "/post-jobs") && (
+        <HRHeader hrDetails={candidateState}></HRHeader>
       )}
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
@@ -73,17 +78,13 @@ function App() {
         ></Route>
         <Route
           path="/hr-job-create"
-          element={
-            <HRJobCreation
-              hrDetails={{ name: "CK", id: 9000001 }}
-            ></HRJobCreation>
-          }
+          element={<HRJobCreation hrDetails={candidateState}></HRJobCreation>}
         ></Route>
         <Route
           path="/hr-view-jobs"
           element={
             <HRViewJobs
-              hrDetails={{ name: "CK", id: 9000001 }}
+              hrDetails={candidateState}
               jobDetails={{ jobTitle: "Software Developer" }}
               candidateDetails={{
                 name: "Sairaj",

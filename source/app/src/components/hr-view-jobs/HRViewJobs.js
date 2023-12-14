@@ -4,14 +4,24 @@ import { HRService } from "../../services/hr-portal-service";
 import { NavLink } from "react-router-dom";
 import serverConfig from "../../serverConfig.json";
 
-const authEndpoint = serverConfig.SERVER_URL + "/auth";
+const authEndpoint = serverConfig.SERVER_URL + "/hr-actions";
 
 export default class HRViewJobs extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hrDetails: { name: "" },
-      candidateDetails: { name: "", skillsetscore: "", personalityscore: "", aptitudescore: "", overallscore: "", personalitydescription: "", skillset: "", personality: "", experience: "" },
+      candidateDetails: {
+        name: "",
+        skillsetscore: "",
+        personalityscore: "",
+        aptitudescore: "",
+        overallscore: "",
+        personalitydescription: "",
+        skillset: "",
+        personality: "",
+        experience: ""
+      },
       jobDetails: { jobTitle: "" },
       listData: [],
       listData1: [],
@@ -34,26 +44,29 @@ export default class HRViewJobs extends Component {
       });
       const data = await response.json();
       const data1 = await response1.json();
-      console.log(data)
+      console.log(data);
       this.setState({
         listData: data,
-        listData1: data1,
+        listData1: data1
       });
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
-  }
+  };
 
   scheduleInterview = () => {
-    this.setState({
-      showErrorMessage: true
-    }, () => {
-      setTimeout(() => {
-        this.setState({
-          showErrorMessage: false
-        });
-      }, 5000);
-    });
+    this.setState(
+      {
+        showErrorMessage: true
+      },
+      () => {
+        setTimeout(() => {
+          this.setState({
+            showErrorMessage: false
+          });
+        }, 5000);
+      }
+    );
   };
   renderTableData() {
     // Render the table rows with data
@@ -62,9 +75,15 @@ export default class HRViewJobs extends Component {
       return (
         <tr key={index}>
           {values
-            .filter((value, index) => ['ID', 'Title', 'JobLocation', 'LastDate'].includes(Object.keys(item)[index]))
+            .filter((value, index) =>
+              ["ID", "Title", "JobLocation", "LastDate"].includes(
+                Object.keys(item)[index]
+              )
+            )
             .map((value, index) => (
-              <td key={index}>{typeof value === 'object' ? value.value : value}</td>
+              <td key={index}>
+                {typeof value === "object" ? value.value : value}
+              </td>
             ))}
         </tr>
       );
@@ -78,9 +97,15 @@ export default class HRViewJobs extends Component {
       return (
         <tr key={index}>
           {values1
-            .filter((value, index) => ['JobID', 'CandidateID', 'FitmentRank', 'MatchPercent'].includes(Object.keys(item)[index]))
+            .filter((value, index) =>
+              ["JobID", "CandidateID", "FitmentRank", "MatchPercent"].includes(
+                Object.keys(item)[index]
+              )
+            )
             .map((value, index) => (
-              <td key={index}>{typeof value === 'object' ? value.value : value}</td>
+              <td key={index}>
+                {typeof value === "object" ? value.value : value}
+              </td>
             ))}
         </tr>
       );
@@ -92,12 +117,24 @@ export default class HRViewJobs extends Component {
     return (
       <div>
         <div id="header-container">
-          <label name='hr-name' id="hr-name">Welcome, {this.props.hrDetails.name}</label>
+          <label name="hr-name" id="hr-name">
+            Welcome, {this.props.hrDetails?.hrName}
+          </label>
           <a href="/hr-view-jobs">
-            <span id="hr-button" className="hr-nav-button-container hr-view-posting-page">View Posted Jobs</span>
+            <span
+              id="hr-button"
+              className="hr-nav-button-container hr-view-posting-page"
+            >
+              View Posted Jobs
+            </span>
           </a>
           <a href="/hr-job-create">
-            <span id="hr-button" className="hr-nav-button-container hr-post-posting-page">Post New Job</span>
+            <span
+              id="hr-button"
+              className="hr-nav-button-container hr-post-posting-page"
+            >
+              Post New Job
+            </span>
           </a>
         </div>
         <hr />
@@ -111,11 +148,12 @@ export default class HRViewJobs extends Component {
                 <th>Last Date</th>
               </tr>
             </thead>
-            <tbody>
-              {this.renderTableData()}
-            </tbody>
+            <tbody>{this.renderTableData()}</tbody>
           </table>
-          <p id="ranklist-text">Considerable Candidates for the job posting - {this.props.jobDetails.jobTitle}</p>
+          <p id="ranklist-text">
+            Considerable Candidates for the job posting -{" "}
+            {this.props.jobDetails.jobTitle}
+          </p>
           <table>
             <thead>
               <tr>
@@ -125,14 +163,14 @@ export default class HRViewJobs extends Component {
                 <th>MatchPercent</th>
               </tr>
             </thead>
-            <tbody>
-              {this.renderTableData1()}
-            </tbody>
+            <tbody>{this.renderTableData1()}</tbody>
           </table>
         </div>
         <div>
           <div id="table-header-container">
-            <label name='candidate-name' >{this.props.candidateDetails.name}</label>
+            <label name="candidate-name">
+              {this.props.candidateDetails.name}
+            </label>
           </div>
           <div className="table-container">
             <table>
@@ -145,10 +183,18 @@ export default class HRViewJobs extends Component {
                 </tr>
               </thead>
               <tbody>
-                <td className="table-content">{this.props.candidateDetails.skillsetscore}</td>
-                <td className="table-content">{this.props.candidateDetails.personalityscore}</td>
-                <td className="table-content">{this.props.candidateDetails.aptitudescore}</td>
-                <td className="table-content">{this.props.candidateDetails.overallscore}</td>
+                <td className="table-content">
+                  {this.props.candidateDetails.skillsetscore}
+                </td>
+                <td className="table-content">
+                  {this.props.candidateDetails.personalityscore}
+                </td>
+                <td className="table-content">
+                  {this.props.candidateDetails.aptitudescore}
+                </td>
+                <td className="table-content">
+                  {this.props.candidateDetails.overallscore}
+                </td>
               </tbody>
             </table>
           </div>
@@ -189,25 +235,29 @@ export default class HRViewJobs extends Component {
             ></input>
           </div>
           <div id="job-post-button-container">
-            {(
+            {
               <div id="">
                 <div
                   onClick={() => this.scheduleInterview()}
                   id="hr-button"
-                  className="hr-submit">Send Interview Invite
+                  className="hr-submit"
+                >
+                  Send Interview Invite
                 </div>
               </div>
-            )}
+            }
           </div>
           <div>
             {this.state.showErrorMessage && (
               <p id="job-scheduled-text">
-                Interview has been scheduled for the candidate - {this.props.candidateDetails.name} for the position - {this.props.jobDetails.jobTitle}
+                Interview has been scheduled for the candidate -{" "}
+                {this.props.candidateDetails.name} for the position -{" "}
+                {this.props.jobDetails.jobTitle}
               </p>
             )}
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
