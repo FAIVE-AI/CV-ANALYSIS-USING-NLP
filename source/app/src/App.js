@@ -81,7 +81,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/hr-job-create"
+          path="/post-jobs"
           element={<HRJobCreation hrDetails={candidateState}></HRJobCreation>}
         ></Route>
         <Route
