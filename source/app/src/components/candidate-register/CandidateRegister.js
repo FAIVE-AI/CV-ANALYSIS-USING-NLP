@@ -319,7 +319,7 @@ export default class CandidateRegister extends Component {
 
         <NavLink
           id="candidate-register-login-navlink"
-          to="/candidate-home"
+          to="/candidate-login"
           hidden
         >
           <button id="candidate-register-nav-button" type="button" hidden>
